@@ -101,7 +101,7 @@ public class Inloggning extends javax.swing.JFrame {
      String dbLosen = idb.fetchSingle(SQLfraga);
      if(losenord.equals(dbLosen)){
          new Meny(idb, ePost).setVisible(true);
-
+         System.out.println("hej");
      }
      else{
         labelFelmeddelande.setVisible(true); 
