@@ -128,9 +128,8 @@ public class Inloggning extends javax.swing.JFrame {
                 return;
             }
 
-            // Om ingen roll hittas
-            labelFelmeddelande.setText("Ingen behörighet kopplad till användaren.");
-            labelFelmeddelande.setVisible(true);
+            
+            
         } else {
             labelFelmeddelande.setText("Felaktig E-post eller Lösenord");
             labelFelmeddelande.setVisible(true);
