@@ -93,24 +93,56 @@ public class Inloggning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bLoggainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoggainActionPerformed
-     String ePost = textEpost.getText();
-     String losenord = textLosenord.getText();
-     try{
-     String SQLfraga = "SELECT losenord FROM anstalld where epost = '" + ePost+"'";
-     System.out.println(SQLfraga);
-     String dbLosen = idb.fetchSingle(SQLfraga);
-     if(losenord.equals(dbLosen)){
-         new Meny(idb, ePost).setVisible(true);
-         System.out.println("hej");
-     }
-     else{
-        labelFelmeddelande.setVisible(true); 
-     }
-     }catch (InfException ex){
-     System.out.println(ex.getMessage());
-     }
-    }//GEN-LAST:event_bLoggainActionPerformed
+       String ePost = textEpost.getText();
+    String losenord = textLosenord.getText();
 
+    try {
+        // Hämta lösenord från databasen
+        String losenFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
+        String dbLosen = idb.fetchSingle(losenFraga);
+
+        if (dbLosen != null && losenord.equals(dbLosen)) {
+            // Hämta anstalld_id
+            String idFraga = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
+            String anstalldId = idb.fetchSingle(idFraga);
+
+            // Kontrollera om användaren är admin
+            String adminFraga = "SELECT aid FROM admin WHERE aid = " + anstalldId;
+            String isAdmin = idb.fetchSingle(adminFraga);
+
+            if (isAdmin != null) {
+                // Starta Admin-meny
+                new MenyAdmin(idb, ePost).setVisible(true);
+                this.dispose(); // stänger inloggningsfönstret
+                return;
+            }
+
+            // Kontrollera om användaren är handläggare
+            String handlaggareFraga = "SELECT aid FROM handlaggare WHERE aid = " + anstalldId;
+            String isHandlaggare = idb.fetchSingle(handlaggareFraga);
+
+            if (isHandlaggare != null) {
+                // Starta Handläggar-meny
+                new Meny(idb, ePost).setVisible(true);
+                this.dispose(); // stänger inloggningsfönstret
+                return;
+            }
+
+            // Om ingen roll hittas
+            labelFelmeddelande.setText("Ingen behörighet kopplad till användaren.");
+            labelFelmeddelande.setVisible(true);
+        } else {
+            labelFelmeddelande.setText("Felaktig E-post eller Lösenord");
+            labelFelmeddelande.setVisible(true);
+        }
+
+    } catch (InfException ex) {
+        System.out.println("Databasfel: " + ex.getMessage());
+        labelFelmeddelande.setText("Databasfel: " + ex.getMessage());
+        labelFelmeddelande.setVisible(true);
+    }
+    }//GEN-LAST:event_bLoggainActionPerformed
+     
     /**
      * @param args the command line arguments
      */
