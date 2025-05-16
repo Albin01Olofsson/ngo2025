@@ -5,6 +5,9 @@
 package ngo2025;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
 /**
  *
  * @author albin
@@ -27,6 +30,12 @@ public class Meny extends javax.swing.JFrame {
        jPanel5.setVisible(false);
        labelinloggadAnvändare.setText(inloggadAnvändare);
        
+       comboProjekt.addItem("Alla");
+       comboProjekt.addItem("Planerat");
+       comboProjekt.addItem("Pågående");
+       comboProjekt.addItem("Avslutat");
+       comboProjekt.addItem("tilldelad");
+       
     }
 
     /**
@@ -38,24 +47,37 @@ public class Meny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
         labelinloggadAnvändare = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        txtFornamn = new javax.swing.JTextField();
+        txtEfternamn = new javax.swing.JTextField();
+        txtAdress = new javax.swing.JTextField();
+        txtTelefon = new javax.swing.JTextField();
+        btnSparaPersonUppgifter = new javax.swing.JButton();
+        txtEpost = new javax.swing.JTextField();
+        txtAnstDatum = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        comboProjekt = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtaProjekt = new javax.swing.JTextArea();
+        bMinauppgifter = new javax.swing.JButton();
+        bProjekt = new javax.swing.JButton();
+        bHållbarhetsmål = new javax.swing.JButton();
+        bPersonal = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-
-        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,40 +85,112 @@ public class Meny extends javax.swing.JFrame {
 
         jLabel2.setText("Mina uppgifter");
 
+        txtFornamn.setText("jTextField1");
+
+        txtEfternamn.setText("jTextField2");
+
+        txtAdress.setText("jTextField3");
+
+        txtTelefon.setText("jTextField4");
+
+        btnSparaPersonUppgifter.setText("Ändra uppgifter");
+        btnSparaPersonUppgifter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSparaPersonUppgifterActionPerformed(evt);
+            }
+        });
+
+        txtEpost.setText("jTextField1");
+
+        txtAnstDatum.setText("jTextField3");
+
+        jLabel1.setText("Förnamn");
+
+        jLabel7.setText("Efternamn");
+
+        jLabel8.setText("Adress");
+
+        jLabel9.setText("Telefon-Nr");
+
+        jLabel10.setText("Epost");
+
+        jLabel11.setText("Anställningsdatum");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(jLabel2)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGap(103, 103, 103)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addGap(73, 73, 73)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTelefon)
+                    .addComponent(txtEpost)
+                    .addComponent(txtAnstDatum)
+                    .addComponent(txtEfternamn)
+                    .addComponent(txtAdress)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 67, Short.MAX_VALUE))
+                    .addComponent(txtFornamn))
+                .addGap(55, 55, 55))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSparaPersonUppgifter)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel6.setText("projekt");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(197, 197, 197)
-                .addComponent(jLabel6)
-                .addContainerGap(221, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel6)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                            .addComponent(txtFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(jLabel1))
+                                                        .addGap(28, 28, 28)
+                                                        .addComponent(txtEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(jLabel7))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                                .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(jLabel8)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel9)))
+                                .addGap(28, 28, 28)
+                                .addComponent(txtEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel10)))
+                        .addGap(28, 28, 28)
+                        .addComponent(txtAnstDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel11)))
+                .addGap(13, 13, 13)
+                .addComponent(btnSparaPersonUppgifter)
+                .addContainerGap())
         );
 
         jLabel3.setText("Hållbarhetsmål");
@@ -105,7 +199,7 @@ public class Meny extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(186, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(190, 190, 190))
@@ -115,7 +209,7 @@ public class Meny extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel3)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(308, Short.MAX_VALUE))
         );
 
         jLabel4.setText("Personal");
@@ -137,6 +231,48 @@ public class Meny extends javax.swing.JFrame {
                 .addContainerGap(305, Short.MAX_VALUE))
         );
 
+        jLabel6.setText("projekt");
+
+        comboProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboProjektActionPerformed(evt);
+            }
+        });
+
+        txtaProjekt.setColumns(20);
+        txtaProjekt.setRows(5);
+        jScrollPane2.setViewportView(txtaProjekt);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(198, 198, 198)
+                                .addComponent(jLabel6))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(180, 180, 180)
+                                .addComponent(comboProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 206, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -145,17 +281,17 @@ public class Meny extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,11 +300,6 @@ public class Meny extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,33 +307,38 @@ public class Meny extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
-        jButton1.setText("Mina uppgifter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bMinauppgifter.setText("Mina uppgifter");
+        bMinauppgifter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bMinauppgifterActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Projekt");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bProjekt.setText("Projekt");
+        bProjekt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bProjektActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Hållbarhetsmål");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bHållbarhetsmål.setText("Hållbarhetsmål");
+        bHållbarhetsmål.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bHållbarhetsmålActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Personal");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bPersonal.setText("Personal");
+        bPersonal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bPersonalActionPerformed(evt);
             }
         });
 
@@ -215,16 +351,16 @@ public class Meny extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
+                    .addComponent(bMinauppgifter)
+                    .addComponent(bProjekt)
+                    .addComponent(bHållbarhetsmål)
+                    .addComponent(bPersonal)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(labelinloggadAnvändare))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -235,51 +371,142 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(labelinloggadAnvändare)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(bMinauppgifter)
                 .addGap(12, 12, 12)
-                .addComponent(jButton2)
+                .addComponent(bProjekt)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(bHållbarhetsmål)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addComponent(bPersonal)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bMinauppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMinauppgifterActionPerformed
         jPanel1.setVisible(true);
         jPanel2.setVisible(true);
     jPanel3.setVisible(false);
     jPanel4.setVisible(false);
     jPanel5.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    try{
+        String sql = "SELECT fornamn, efternamn, adress, telefon, epost, anstallningsdatum FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
+        HashMap<String, String> uppgifter = idb.fetchRow(sql);
+        
+        if(uppgifter !=null){
+            txtFornamn.setText(uppgifter.get("fornamn"));
+            txtEfternamn.setText(uppgifter.get("efternamn"));
+            txtAdress.setText(uppgifter.get("adress"));
+            txtTelefon.setText(uppgifter.get("telefon"));
+            txtEpost.setText(uppgifter.get("epost"));
+            txtAnstDatum.setText(uppgifter.get("anstallningsdatum"));
+        }
+    }catch(InfException ex){
+        JOptionPane.showMessageDialog(this,"Kunde inte hämta uppgifter" + ex.getMessage());
+    }
+    }//GEN-LAST:event_bMinauppgifterActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProjektActionPerformed
         jPanel1.setVisible(true);
         jPanel2.setVisible(false);
     jPanel3.setVisible(true);
     jPanel4.setVisible(false);
     jPanel5.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bProjektActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bHållbarhetsmålActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHållbarhetsmålActionPerformed
         jPanel1.setVisible(true);
         jPanel2.setVisible(false);
     jPanel3.setVisible(false);
     jPanel4.setVisible(true);
     jPanel5.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bHållbarhetsmålActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPersonalActionPerformed
         jPanel1.setVisible(true);
         jPanel2.setVisible(false);
     jPanel3.setVisible(false);
     jPanel4.setVisible(false);
     jPanel5.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bPersonalActionPerformed
+
+    private void btnSparaPersonUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaPersonUppgifterActionPerformed
+        try{
+            String fornamn = txtFornamn.getText();
+            String efternamn = txtEfternamn.getText();
+            String adress = txtAdress.getText();
+            String telefon = txtTelefon.getText();
+            
+            String sql ="UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + efternamn +
+                     "', adress = '" + adress + "', telefon = '" + telefon +
+                     "' WHERE epost = '" + inloggadAnvändare + "'";
+            idb.update(sql);
+            JOptionPane.showMessageDialog(this, "Uppgifterna har sparats!");
+        }catch (InfException e){
+          JOptionPane.showMessageDialog(this, "Fel vid uppdatering: " + e.getMessage());  
+        }
+    }//GEN-LAST:event_btnSparaPersonUppgifterActionPerformed
+
+    private void comboProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProjektActionPerformed
+              txtaProjekt.setText("");
+              String valtAlternativ = (String)comboProjekt.getSelectedItem();
+              
+              try{
+                 String sql = "SELECT aid, avdelning FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
+                 HashMap<String, String> användareInfo = idb.fetchRow(sql);
+                 
+                 String aid = användareInfo.get("aid");
+                 String avdelning = användareInfo.get("avdelning");
+                 String sqlProj = "";
+                 
+                 if(valtAlternativ.equals("tilldelad")){
+                    
+                     sqlProj = "SELECT projekt.* FROM projekt "
+                         + "JOIN ans_proj ON projekt.pid = ans_proj.pid "
+                         + "WHERE ans_proj.aid = " + aid; 
+                 }else if (!valtAlternativ.equals("Alla")){
+                     
+                     sqlProj = "SELECT projekt.* FROM projekt "
+                         + "JOIN handlaggare ON projekt.projektchef = handlaggare.aid "
+                         + "JOIN anstalld ON handlaggare.aid = anstalld.aid "
+                         + "WHERE anstalld.avdelning = " + avdelning
+                         + " AND projekt.status = '" + valtAlternativ + "'";
+                 }else {
+                     sqlProj = "SELECT projekt.* FROM projekt "
+                         + "JOIN handlaggare ON projekt.projektchef = handlaggare.aid "
+                         + "JOIN anstalld ON handlaggare.aid = anstalld.aid "
+                         + "WHERE anstalld.avdelning = " + avdelning;
+                 }
+                 
+                 ArrayList<HashMap<String,String>> resultat = idb.fetchRows(sqlProj);
+                 if (resultat != null && !resultat.isEmpty()) {
+            for (HashMap<String, String> rad : resultat) {
+                txtaProjekt.append("Projektnamn: " + rad.get("projektnamn") + "\n" +
+                    "Beskrivning: " + rad.get("beskrivning") + "\n" +
+                    "Startdatum: " + rad.get("startdatum") + "\n" +
+                    "Slutdatum: " + rad.get("slutdatum") + "\n" +
+                    "Kostnad: " + rad.get("kostnad") + " kr\n" +
+                    "Status: " + rad.get("status") + "\n" +
+                    "Prioritet: " + rad.get("prioritet") + "\n" +
+                    "Projektchef ID: " + rad.get("projektchef") + "\n" +
+                    "Land ID: " + rad.get("land") + "\n");
+            }
+        } else {
+            txtaProjekt.setText("Inga projekt hittades.");
+        }
+
+    } catch (InfException e) {
+        txtaProjekt.setText("Fel: " + e.getMessage());
+    }
+              
+              
+             
+              
+              
+    }//GEN-LAST:event_comboProjektActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,21 +544,36 @@ public class Meny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton bHållbarhetsmål;
+    private javax.swing.JButton bMinauppgifter;
+    private javax.swing.JButton bPersonal;
+    private javax.swing.JButton bProjekt;
+    private javax.swing.JButton btnSparaPersonUppgifter;
+    private javax.swing.JComboBox<String> comboProjekt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelinloggadAnvändare;
+    private javax.swing.JTextField txtAdress;
+    private javax.swing.JTextField txtAnstDatum;
+    private javax.swing.JTextField txtEfternamn;
+    private javax.swing.JTextField txtEpost;
+    private javax.swing.JTextField txtFornamn;
+    private javax.swing.JTextField txtTelefon;
+    private javax.swing.JTextArea txtaProjekt;
     // End of variables declaration//GEN-END:variables
 }
