@@ -8,6 +8,7 @@ import oru.inf.InfException;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 /**
  *
  * @author albin
@@ -66,6 +67,8 @@ public class Meny extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ListHållbarhetsmål = new javax.swing.JList<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -151,7 +154,6 @@ public class Meny extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +170,7 @@ public class Meny extends javax.swing.JFrame {
                                                         .addGap(28, 28, 28)
                                                         .addComponent(txtEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(jLabel7))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                                 .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -195,21 +197,32 @@ public class Meny extends javax.swing.JFrame {
 
         jLabel3.setText("Hållbarhetsmål");
 
+        ListHållbarhetsmål.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(ListHållbarhetsmål);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(186, Short.MAX_VALUE)
+                .addGap(136, 136, 136)
                 .addComponent(jLabel3)
-                .addGap(190, 190, 190))
+                .addContainerGap(249, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addComponent(jLabel3)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLabel4.setText("Personal");
@@ -219,7 +232,7 @@ public class Meny extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(233, Short.MAX_VALUE)
+                .addContainerGap(242, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(177, 177, 177))
         );
@@ -228,10 +241,10 @@ public class Meny extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
 
-        jLabel6.setText("projekt");
+        jLabel6.setText("Projektstatus");
 
         comboProjekt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +270,7 @@ public class Meny extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(180, 180, 180)
                                 .addComponent(comboProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 206, Short.MAX_VALUE))
+                        .addGap(0, 192, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -423,6 +436,26 @@ public class Meny extends javax.swing.JFrame {
     jPanel3.setVisible(false);
     jPanel4.setVisible(true);
     jPanel5.setVisible(false);
+    
+    try{
+        String sql = "SELECT namn, beskrivning, malnummer FROM hallbarhetsmal ORDER BY hid";
+        ArrayList<HashMap<String,String>> malLista = idb.fetchRows(sql);
+        //skapa ny modell till jList
+        DefaultListModel<String> modell = new DefaultListModel<>();
+        
+        if(malLista != null && !malLista.isEmpty()) {
+            for(HashMap<String,String> mal: malLista){
+                String rad =mal.get("malnummer")+" "+"Mål: " + mal.get("namn")+"--"+"Beskrivning: "+mal.get("beskrivning");
+                modell.addElement(rad);
+            }
+        }else{
+            modell.addElement("Inga hållbarhetsmål hittades.");
+        }
+        ListHållbarhetsmål.setModel(modell);
+        
+    }catch(InfException ex){
+         JOptionPane.showMessageDialog(this, "Fel vid hämtning av hållbarhetsmål: " + ex.getMessage());
+    }
     }//GEN-LAST:event_bHållbarhetsmålActionPerformed
 
     private void bPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPersonalActionPerformed
@@ -544,6 +577,7 @@ public class Meny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> ListHållbarhetsmål;
     private javax.swing.JButton bHållbarhetsmål;
     private javax.swing.JButton bMinauppgifter;
     private javax.swing.JButton bPersonal;
@@ -566,6 +600,7 @@ public class Meny extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelinloggadAnvändare;
     private javax.swing.JTextField txtAdress;
