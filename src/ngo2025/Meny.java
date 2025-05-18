@@ -24,11 +24,11 @@ public class Meny extends javax.swing.JFrame {
         this.inloggadAnvändare=inloggadAnvändare;
         
        initComponents();
-       jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(false);
+       jPanelStart.setVisible(true);
+       jPanelMinaUppgifter.setVisible(false);
+       jPanelProjekt.setVisible(false);
+       jPanelHållbarhetsmål.setVisible(false);
+       jPanelPersonal.setVisible(false);
        labelinloggadAnvändare.setText(inloggadAnvändare);
        
        comboProjekt.addItem("Alla");
@@ -49,8 +49,8 @@ public class Meny extends javax.swing.JFrame {
     private void initComponents() {
 
         labelinloggadAnvändare = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelStart = new javax.swing.JPanel();
+        jPanelMinaUppgifter = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtFornamn = new javax.swing.JTextField();
         txtEfternamn = new javax.swing.JTextField();
@@ -65,13 +65,15 @@ public class Meny extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanelHållbarhetsmål = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListHållbarhetsmål = new javax.swing.JList<>();
-        jPanel5 = new javax.swing.JPanel();
+        jPanelPersonal = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListPersonal = new javax.swing.JList<>();
+        jPanelProjekt = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         comboProjekt = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -119,13 +121,13 @@ public class Meny extends javax.swing.JFrame {
 
         jLabel11.setText("Anställningsdatum");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelMinaUppgifterLayout = new javax.swing.GroupLayout(jPanelMinaUppgifter);
+        jPanelMinaUppgifter.setLayout(jPanelMinaUppgifterLayout);
+        jPanelMinaUppgifterLayout.setHorizontalGroup(
+            jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
                 .addGap(103, 103, 103)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
@@ -133,38 +135,38 @@ public class Meny extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
                 .addGap(73, 73, 73)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTelefon)
                     .addComponent(txtEpost)
                     .addComponent(txtAnstDatum)
                     .addComponent(txtEfternamn)
                     .addComponent(txtAdress)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 67, Short.MAX_VALUE))
                     .addComponent(txtFornamn))
                 .addGap(55, 55, 55))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnSparaPersonUppgifter)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelMinaUppgifterLayout.setVerticalGroup(
+            jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
+                        .addGroup(jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
+                                .addGroup(jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
+                                        .addGroup(jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
+                                                .addGroup(jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
+                                                        .addGroup(jPanelMinaUppgifterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                             .addComponent(txtFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(jLabel1))
                                                         .addGap(28, 28, 28)
@@ -172,22 +174,22 @@ public class Meny extends javax.swing.JFrame {
                                                     .addComponent(jLabel7))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                                 .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
                                                 .addComponent(jLabel8)))
                                         .addGap(18, 18, 18)
                                         .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(jLabel9)))
                                 .addGap(28, 28, 28)
                                 .addComponent(txtEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel10)))
                         .addGap(28, 28, 28)
                         .addComponent(txtAnstDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelMinaUppgifterLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel11)))
                 .addGap(13, 13, 13)
@@ -204,44 +206,57 @@ public class Meny extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(ListHållbarhetsmål);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelHållbarhetsmålLayout = new javax.swing.GroupLayout(jPanelHållbarhetsmål);
+        jPanelHållbarhetsmål.setLayout(jPanelHållbarhetsmålLayout);
+        jPanelHållbarhetsmålLayout.setHorizontalGroup(
+            jPanelHållbarhetsmålLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelHållbarhetsmålLayout.createSequentialGroup()
                 .addGap(136, 136, 136)
                 .addComponent(jLabel3)
                 .addContainerGap(249, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanelHållbarhetsmålLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanelHållbarhetsmålLayout.setVerticalGroup(
+            jPanelHållbarhetsmålLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelHållbarhetsmålLayout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jLabel4.setText("Personal");
+        jLabel4.setText("Personal på min avdelning");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(242, Short.MAX_VALUE)
+        jListPersonal.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jListPersonal);
+
+        javax.swing.GroupLayout jPanelPersonalLayout = new javax.swing.GroupLayout(jPanelPersonal);
+        jPanelPersonal.setLayout(jPanelPersonalLayout);
+        jPanelPersonalLayout.setHorizontalGroup(
+            jPanelPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(jPanelPersonalLayout.createSequentialGroup()
+                .addGap(166, 166, 166)
                 .addComponent(jLabel4)
-                .addGap(177, 177, 177))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+        jPanelPersonalLayout.setVerticalGroup(
+            jPanelPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPersonalLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addComponent(jLabel4)
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLabel6.setText("Projektstatus");
@@ -256,27 +271,27 @@ public class Meny extends javax.swing.JFrame {
         txtaProjekt.setRows(5);
         jScrollPane2.setViewportView(txtaProjekt);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelProjektLayout = new javax.swing.GroupLayout(jPanelProjekt);
+        jPanelProjekt.setLayout(jPanelProjektLayout);
+        jPanelProjektLayout.setHorizontalGroup(
+            jPanelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProjektLayout.createSequentialGroup()
+                .addGroup(jPanelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelProjektLayout.createSequentialGroup()
+                        .addGroup(jPanelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelProjektLayout.createSequentialGroup()
                                 .addGap(198, 198, 198)
                                 .addComponent(jLabel6))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanelProjektLayout.createSequentialGroup()
                                 .addGap(180, 180, 180)
                                 .addComponent(comboProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 192, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanelProjektLayout.setVerticalGroup(
+            jPanelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProjektLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -286,44 +301,44 @@ public class Meny extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelStartLayout = new javax.swing.GroupLayout(jPanelStart);
+        jPanelStart.setLayout(jPanelStartLayout);
+        jPanelStartLayout.setHorizontalGroup(
+            jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelHållbarhetsmål, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelStartLayout.setVerticalGroup(
+            jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelHållbarhetsmål, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -374,7 +389,7 @@ public class Meny extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(labelinloggadAnvändare))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,18 +407,18 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(bPersonal)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bMinauppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMinauppgifterActionPerformed
-        jPanel1.setVisible(true);
-        jPanel2.setVisible(true);
-    jPanel3.setVisible(false);
-    jPanel4.setVisible(false);
-    jPanel5.setVisible(false);
+        jPanelStart.setVisible(true);
+        jPanelMinaUppgifter.setVisible(true);
+    jPanelProjekt.setVisible(false);
+    jPanelHållbarhetsmål.setVisible(false);
+    jPanelPersonal.setVisible(false);
     
     try{
         String sql = "SELECT fornamn, efternamn, adress, telefon, epost, anstallningsdatum FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
@@ -423,19 +438,19 @@ public class Meny extends javax.swing.JFrame {
     }//GEN-LAST:event_bMinauppgifterActionPerformed
 
     private void bProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProjektActionPerformed
-        jPanel1.setVisible(true);
-        jPanel2.setVisible(false);
-    jPanel3.setVisible(true);
-    jPanel4.setVisible(false);
-    jPanel5.setVisible(false);
+        jPanelStart.setVisible(true);
+        jPanelMinaUppgifter.setVisible(false);
+    jPanelProjekt.setVisible(true);
+    jPanelHållbarhetsmål.setVisible(false);
+    jPanelPersonal.setVisible(false);
     }//GEN-LAST:event_bProjektActionPerformed
 
     private void bHållbarhetsmålActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHållbarhetsmålActionPerformed
-        jPanel1.setVisible(true);
-        jPanel2.setVisible(false);
-    jPanel3.setVisible(false);
-    jPanel4.setVisible(true);
-    jPanel5.setVisible(false);
+        jPanelStart.setVisible(true);
+        jPanelMinaUppgifter.setVisible(false);
+    jPanelProjekt.setVisible(false);
+    jPanelHållbarhetsmål.setVisible(true);
+    jPanelPersonal.setVisible(false);
     
     try{
         String sql = "SELECT namn, beskrivning, malnummer FROM hallbarhetsmal ORDER BY hid";
@@ -459,11 +474,28 @@ public class Meny extends javax.swing.JFrame {
     }//GEN-LAST:event_bHållbarhetsmålActionPerformed
 
     private void bPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPersonalActionPerformed
-        jPanel1.setVisible(true);
-        jPanel2.setVisible(false);
-    jPanel3.setVisible(false);
-    jPanel4.setVisible(false);
-    jPanel5.setVisible(true);
+        jPanelStart.setVisible(true);
+        jPanelMinaUppgifter.setVisible(false);
+    jPanelProjekt.setVisible(false);
+    jPanelHållbarhetsmål.setVisible(false);
+    jPanelPersonal.setVisible(true);
+    
+    try{
+        String sql = "SELECT fornamn, efternamn, epost FROM anstalld WHERE avdelning = (SELECT avdelning from anstalld WHERE epost =  '" + inloggadAnvändare + "')";
+        ArrayList<HashMap<String,String>> personalLista = idb.fetchRows(sql);
+        DefaultListModel<String> modell = new DefaultListModel<>();
+        if(personalLista != null && !personalLista.isEmpty()) {
+            for(HashMap<String,String> personal: personalLista){
+                String rad =personal.get("fornamn")+" "+personal.get("efternamn")+" "+personal.get("epost");
+                modell.addElement(rad);
+            }
+        }else{
+            modell.addElement("Ingen personal hittades.");
+        }
+        jListPersonal.setModel(modell);
+    } catch (InfException ex){
+        JOptionPane.showMessageDialog(this, "fel vid hämtning av Personal; " + ex.getMessage());
+    }
     }//GEN-LAST:event_bPersonalActionPerformed
 
     private void btnSparaPersonUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaPersonUppgifterActionPerformed
@@ -595,13 +627,15 @@ public class Meny extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JList<String> jListPersonal;
+    private javax.swing.JPanel jPanelHållbarhetsmål;
+    private javax.swing.JPanel jPanelMinaUppgifter;
+    private javax.swing.JPanel jPanelPersonal;
+    private javax.swing.JPanel jPanelProjekt;
+    private javax.swing.JPanel jPanelStart;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelinloggadAnvändare;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtAnstDatum;
