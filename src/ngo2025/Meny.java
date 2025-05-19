@@ -67,8 +67,8 @@ public class Meny extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanelHållbarhetsmål = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ListHållbarhetsmål = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextAreaHållbarhetsmål = new javax.swing.JTextArea();
         jPanelPersonal = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -199,31 +199,30 @@ public class Meny extends javax.swing.JFrame {
 
         jLabel3.setText("Hållbarhetsmål");
 
-        ListHållbarhetsmål.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(ListHållbarhetsmål);
+        jTextAreaHållbarhetsmål.setColumns(20);
+        jTextAreaHållbarhetsmål.setRows(5);
+        jScrollPane4.setViewportView(jTextAreaHållbarhetsmål);
 
         javax.swing.GroupLayout jPanelHållbarhetsmålLayout = new javax.swing.GroupLayout(jPanelHållbarhetsmål);
         jPanelHållbarhetsmål.setLayout(jPanelHållbarhetsmålLayout);
         jPanelHållbarhetsmålLayout.setHorizontalGroup(
             jPanelHållbarhetsmålLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHållbarhetsmålLayout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jLabel3)
-                .addContainerGap(249, Short.MAX_VALUE))
-            .addGroup(jPanelHållbarhetsmålLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
+                .addGroup(jPanelHållbarhetsmålLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelHållbarhetsmålLayout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanelHållbarhetsmålLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanelHållbarhetsmålLayout.setVerticalGroup(
             jPanelHållbarhetsmålLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHållbarhetsmålLayout.createSequentialGroup()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -233,6 +232,11 @@ public class Meny extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        jListPersonal.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListPersonalValueChanged(evt);
+            }
         });
         jScrollPane3.setViewportView(jListPersonal);
 
@@ -456,17 +460,18 @@ public class Meny extends javax.swing.JFrame {
         String sql = "SELECT namn, beskrivning, malnummer FROM hallbarhetsmal ORDER BY hid";
         ArrayList<HashMap<String,String>> malLista = idb.fetchRows(sql);
         //skapa ny modell till jList
-        DefaultListModel<String> modell = new DefaultListModel<>();
+         StringBuilder text = new StringBuilder();
         
         if(malLista != null && !malLista.isEmpty()) {
             for(HashMap<String,String> mal: malLista){
-                String rad =mal.get("malnummer")+" "+"Mål: " + mal.get("namn")+"--"+"Beskrivning: "+mal.get("beskrivning");
-                modell.addElement(rad);
+                String rad = mal.get("malnummer") + " Mål: " + mal.get("namn") + "\n" +
+             "Beskrivning: " + mal.get("beskrivning") + "\n\n";
+                text.append(rad);
             }
         }else{
-            modell.addElement("Inga hållbarhetsmål hittades.");
+            text.append("Inga hållbarhetsmål hittades.");
         }
-        ListHållbarhetsmål.setModel(modell);
+       jTextAreaHållbarhetsmål.setText(text.toString());
         
     }catch(InfException ex){
          JOptionPane.showMessageDialog(this, "Fel vid hämtning av hållbarhetsmål: " + ex.getMessage());
@@ -486,7 +491,7 @@ public class Meny extends javax.swing.JFrame {
         DefaultListModel<String> modell = new DefaultListModel<>();
         if(personalLista != null && !personalLista.isEmpty()) {
             for(HashMap<String,String> personal: personalLista){
-                String rad =personal.get("fornamn")+" "+personal.get("efternamn")+" "+personal.get("epost");
+                String rad =personal.get("fornamn")+" "+personal.get("efternamn")+" "+"Epost: "+personal.get("epost");
                 modell.addElement(rad);
             }
         }else{
@@ -573,6 +578,39 @@ public class Meny extends javax.swing.JFrame {
               
     }//GEN-LAST:event_comboProjektActionPerformed
 
+    private void jListPersonalValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPersonalValueChanged
+      if (!evt.getValueIsAdjusting()) {
+        String valdRad = jListPersonal.getSelectedValue();
+
+        if (valdRad != null && valdRad.contains("Epost: ")) {
+            // Hämta e-postadressen genom att ta allt efter "Epost: "
+            String epost = valdRad.substring(valdRad.indexOf("Epost: ") + 7).trim();
+
+            try {
+                // Skapa SQL-fråga för att hämta all info om personen
+                String sql = "SELECT * FROM anstalld WHERE epost = '" + epost + "'";
+                HashMap<String, String> anstalld = idb.fetchRow(sql);
+
+                if (anstalld != null) {
+                    String info = "Namn: " + anstalld.get("fornamn") + " " + anstalld.get("efternamn") + "\n" +
+                                  "E-post: " + anstalld.get("epost") + "\n" +
+                                  "Telefon: " + anstalld.get("telefon") + "\n" +
+                                  "Adress: " + anstalld.get("adress") + "\n" +
+                                  "Roll: " + anstalld.get("roll") + "\n" +
+                                  "Avdelning: " + anstalld.get("avdelning");
+
+                    JOptionPane.showMessageDialog(this, info, "Anställd info", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Ingen information hittades för vald anställd.", "Ingen träff", JOptionPane.WARNING_MESSAGE);
+                }
+
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(this, "Fel vid databassökning: " + ex.getMessage(), "Databasfel", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    }//GEN-LAST:event_jListPersonalValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -609,7 +647,6 @@ public class Meny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> ListHållbarhetsmål;
     private javax.swing.JButton bHållbarhetsmål;
     private javax.swing.JButton bMinauppgifter;
     private javax.swing.JButton bPersonal;
@@ -633,9 +670,10 @@ public class Meny extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelPersonal;
     private javax.swing.JPanel jPanelProjekt;
     private javax.swing.JPanel jPanelStart;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextArea jTextAreaHållbarhetsmål;
     private javax.swing.JLabel labelinloggadAnvändare;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtAnstDatum;
