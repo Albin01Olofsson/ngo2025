@@ -123,7 +123,7 @@ public class Inloggning extends javax.swing.JFrame {
 
             if (isHandlaggare != null) {
                 // Starta Handläggar-meny
-                new Meny(idb, ePost).setVisible(true);
+                new Meny (idb, ePost).setVisible(true);
                 this.dispose(); // stänger inloggningsfönstret
                 return;
             }

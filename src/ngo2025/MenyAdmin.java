@@ -18,12 +18,12 @@ public class MenyAdmin extends javax.swing.JFrame {
         this.inloggadAnvändare=inloggadAnvändare;
         
         initComponents();
-        jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(false);
-       jPanel6.setVisible(false);
+        jPanelStart.setVisible(true);
+       jPanelAnställda.setVisible(false);
+       jPanelProjekt.setVisible(false);
+       jPanelAvdelningar.setVisible(false);
+       jPanelPartners.setVisible(false);
+       jPanelLänder.setVisible(false);
         
         jLabelAnvändare.setText(inloggadAnvändare);
     }
@@ -39,21 +39,21 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         jLabelAnvändare = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jButtonAnställda = new javax.swing.JButton();
+        jButtonProjekt = new javax.swing.JButton();
+        jButtonAvdelningar = new javax.swing.JButton();
+        jButtonPartner = new javax.swing.JButton();
+        jButtonLänder = new javax.swing.JButton();
+        jPanelStart = new javax.swing.JPanel();
+        jPanelAnställda = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        jPanelLänder = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        jPanelPartners = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanelAvdelningar = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanelProjekt = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,55 +62,55 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         jLabel1.setText("SDG Sweden");
 
-        jButton1.setText("Anställda");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAnställda.setText("Anställda");
+        jButtonAnställda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonAnställdaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Projekt");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonProjekt.setText("Projekt");
+        jButtonProjekt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonProjektActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Avdelningar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAvdelningar.setText("Avdelningar");
+        jButtonAvdelningar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonAvdelningarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Partners");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPartner.setText("Partners");
+        jButtonPartner.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonPartnerActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Länder");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLänder.setText("Länder");
+        jButtonLänder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonLänderActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Anställda");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAnställdaLayout = new javax.swing.GroupLayout(jPanelAnställda);
+        jPanelAnställda.setLayout(jPanelAnställdaLayout);
+        jPanelAnställdaLayout.setHorizontalGroup(
+            jPanelAnställdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAnställdaLayout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(jLabel2)
                 .addContainerGap(261, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelAnställdaLayout.setVerticalGroup(
+            jPanelAnställdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAnställdaLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -118,18 +118,18 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         jLabel6.setText("Länder");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelLänderLayout = new javax.swing.GroupLayout(jPanelLänder);
+        jPanelLänder.setLayout(jPanelLänderLayout);
+        jPanelLänderLayout.setHorizontalGroup(
+            jPanelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLänderLayout.createSequentialGroup()
                 .addGap(208, 208, 208)
                 .addComponent(jLabel6)
                 .addContainerGap(267, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        jPanelLänderLayout.setVerticalGroup(
+            jPanelLänderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLänderLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel6)
                 .addContainerGap(308, Short.MAX_VALUE))
@@ -137,18 +137,18 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         jLabel5.setText("Partners");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelPartnersLayout = new javax.swing.GroupLayout(jPanelPartners);
+        jPanelPartners.setLayout(jPanelPartnersLayout);
+        jPanelPartnersLayout.setHorizontalGroup(
+            jPanelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPartnersLayout.createSequentialGroup()
                 .addGap(229, 229, 229)
                 .addComponent(jLabel5)
                 .addContainerGap(238, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanelPartnersLayout.setVerticalGroup(
+            jPanelPartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPartnersLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel5)
                 .addContainerGap(320, Short.MAX_VALUE))
@@ -156,18 +156,18 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         jLabel4.setText("Avdelningar");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAvdelningarLayout = new javax.swing.GroupLayout(jPanelAvdelningar);
+        jPanelAvdelningar.setLayout(jPanelAvdelningarLayout);
+        jPanelAvdelningarLayout.setHorizontalGroup(
+            jPanelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAvdelningarLayout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(jLabel4)
                 .addContainerGap(235, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanelAvdelningarLayout.setVerticalGroup(
+            jPanelAvdelningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAvdelningarLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
                 .addContainerGap(319, Short.MAX_VALUE))
@@ -175,71 +175,71 @@ public class MenyAdmin extends javax.swing.JFrame {
 
         jLabel3.setText("Projekt");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelProjektLayout = new javax.swing.GroupLayout(jPanelProjekt);
+        jPanelProjekt.setLayout(jPanelProjektLayout);
+        jPanelProjektLayout.setHorizontalGroup(
+            jPanelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProjektLayout.createSequentialGroup()
                 .addGap(211, 211, 211)
                 .addComponent(jLabel3)
                 .addContainerGap(265, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanelProjektLayout.setVerticalGroup(
+            jPanelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProjektLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addContainerGap(319, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelStartLayout = new javax.swing.GroupLayout(jPanelStart);
+        jPanelStart.setLayout(jPanelStartLayout);
+        jPanelStartLayout.setHorizontalGroup(
+            jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelAnställda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelLänder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelPartners, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelAvdelningar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelStartLayout.setVerticalGroup(
+            jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelAnställda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelLänder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelPartners, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelAvdelningar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelStartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -250,15 +250,15 @@ public class MenyAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonLänder)
+                    .addComponent(jButtonPartner)
+                    .addComponent(jButtonAvdelningar)
+                    .addComponent(jButtonProjekt)
+                    .addComponent(jButtonAnställda)
                     .addComponent(jLabel1)
                     .addComponent(jLabelAnvändare))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,66 +268,66 @@ public class MenyAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabelAnvändare)
                 .addGap(38, 38, 38)
-                .addComponent(jButton1)
+                .addComponent(jButtonAnställda)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jButtonProjekt)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(jButtonAvdelningar)
                 .addGap(27, 27, 27)
-                .addComponent(jButton4)
+                .addComponent(jButtonPartner)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(jButtonLänder)
                 .addContainerGap(73, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       jPanel1.setVisible(true);
-       jPanel2.setVisible(true);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(false);
-       jPanel6.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonAnställdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnställdaActionPerformed
+       jPanelStart.setVisible(true);
+       jPanelAnställda.setVisible(true);
+       jPanelProjekt.setVisible(false);
+       jPanelAvdelningar.setVisible(false);
+       jPanelPartners.setVisible(false);
+       jPanelLänder.setVisible(false);
+    }//GEN-LAST:event_jButtonAnställdaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(true);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(false);
-       jPanel6.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProjektActionPerformed
+        jPanelStart.setVisible(true);
+       jPanelAnställda.setVisible(false);
+       jPanelProjekt.setVisible(true);
+       jPanelAvdelningar.setVisible(false);
+       jPanelPartners.setVisible(false);
+       jPanelLänder.setVisible(false);
+    }//GEN-LAST:event_jButtonProjektActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(true);
-       jPanel5.setVisible(false);
-       jPanel6.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonAvdelningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvdelningarActionPerformed
+        jPanelStart.setVisible(true);
+       jPanelAnställda.setVisible(false);
+       jPanelProjekt.setVisible(false);
+       jPanelAvdelningar.setVisible(true);
+       jPanelPartners.setVisible(false);
+       jPanelLänder.setVisible(false);
+    }//GEN-LAST:event_jButtonAvdelningarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(true);
-       jPanel6.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jButtonPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPartnerActionPerformed
+        jPanelStart.setVisible(true);
+       jPanelAnställda.setVisible(false);
+       jPanelProjekt.setVisible(false);
+       jPanelAvdelningar.setVisible(false);
+       jPanelPartners.setVisible(true);
+       jPanelLänder.setVisible(false);
+    }//GEN-LAST:event_jButtonPartnerActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(false);
-       jPanel6.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void jButtonLänderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLänderActionPerformed
+        jPanelStart.setVisible(true);
+       jPanelAnställda.setVisible(false);
+       jPanelProjekt.setVisible(false);
+       jPanelAvdelningar.setVisible(false);
+       jPanelPartners.setVisible(false);
+       jPanelLänder.setVisible(true);
+    }//GEN-LAST:event_jButtonLänderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,11 +365,11 @@ public class MenyAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonAnställda;
+    private javax.swing.JButton jButtonAvdelningar;
+    private javax.swing.JButton jButtonLänder;
+    private javax.swing.JButton jButtonPartner;
+    private javax.swing.JButton jButtonProjekt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -377,11 +377,11 @@ public class MenyAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelAnvändare;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanelAnställda;
+    private javax.swing.JPanel jPanelAvdelningar;
+    private javax.swing.JPanel jPanelLänder;
+    private javax.swing.JPanel jPanelPartners;
+    private javax.swing.JPanel jPanelProjekt;
+    private javax.swing.JPanel jPanelStart;
     // End of variables declaration//GEN-END:variables
 }
