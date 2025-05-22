@@ -95,7 +95,6 @@ public class Meny extends javax.swing.JFrame {
         bProjektChef = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 400));
 
         labelinloggadAnvändare.setText("jLabel1");
 
@@ -293,10 +292,6 @@ public class Meny extends javax.swing.JFrame {
         txtaProjekt.setColumns(20);
         txtaProjekt.setRows(5);
         jScrollPane2.setViewportView(txtaProjekt);
-
-        jTextFieldFråndatum.setText("jTextField1");
-
-        jTextFieldTilldatum.setText("jTextField2");
 
         jButtonSökprojekt.setText("Sök");
         jButtonSökprojekt.addActionListener(new java.awt.event.ActionListener() {
@@ -665,14 +660,14 @@ public class Meny extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(this,  "Fyll i både från- och till-datum i formatet yyyy-MM-dd.");
               return;
           }
-          String sqlAVD = "SELECT avdelning,  FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
+          String sqlAVD = "SELECT avdelning FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
           String avdelning = idb.fetchSingle(sqlAVD);
           
-           String sql = "SELECT DISTINCT projekt.* FROM projekt" +
-                   "JOIN ans_proj on projekt.pid = ans_proj.pid" +
-                   "JOIN anstalld on ans_proj.aid = anstalld.aid" +
+           String sql = "SELECT DISTINCT projekt.* FROM projekt " +
+                   "JOIN ans_proj on projekt.pid = ans_proj.pid " +
+                   "JOIN anstalld on ans_proj.aid = anstalld.aid " +
                    "WHERE anstalld.avdelning = '" + avdelning + "' " +
-                   "AND (projekt.status) = 'Pågående' " +
+                   "AND projekt.status = 'Pågående' " +
                    "AND (projekt.startdatum <= '" + tillDatum + "' " +
                    "AND projekt.slutdatum >= '" + frånDatum + "' )";
                    
