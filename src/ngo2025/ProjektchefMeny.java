@@ -57,7 +57,7 @@ public class ProjektchefMeny extends javax.swing.JFrame {
         jTextFieldstatus = new javax.swing.JTextField();
         jTextFieldprioritet = new javax.swing.JTextField();
         jTextFieldLand = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonSparaProjekt = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -120,7 +120,12 @@ public class ProjektchefMeny extends javax.swing.JFrame {
 
         jTextFieldLand.setText("jTextField9");
 
-        jButton1.setText("Spara");
+        jButtonSparaProjekt.setText("Spara");
+        jButtonSparaProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSparaProjektActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -130,7 +135,7 @@ public class ProjektchefMeny extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBoxProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonSparaProjekt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,7 +173,7 @@ public class ProjektchefMeny extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jButtonSparaProjekt)
                 .addGap(20, 20, 20))
         );
 
@@ -301,6 +306,9 @@ public class ProjektchefMeny extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+
+    
     private void jButtonProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProjektActionPerformed
        jPanel1.setVisible(true);
        jPanel2.setVisible(true);
@@ -334,8 +342,78 @@ public class ProjektchefMeny extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonStatistikActionPerformed
 
     private void jComboBoxProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProjektActionPerformed
-        
+      try{
+           String valtProjekt = (String) jComboBoxProjekt.getSelectedItem();
+           if(valtProjekt == null || valtProjekt.isEmpty()){
+               return;
+            }
+          //hämta projektchef aid
+           String aidSQL = "SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
+            String mittAid = idb.fetchSingle(aidSQL);
+            
+            // hämta projektet via namn
+            String pidSQL = "SELECT pid FROM projekt WHERE projektnamn = '" + valtProjekt + "' AND projektchef = '" + mittAid + "'";
+            String pid = idb.fetchSingle(pidSQL);
+            
+            if(pid == null){
+                JOptionPane.showMessageDialog(this, "kunde inte hitta projektet");
+                return;
+            }
+            String sql = "SELECT * FROM projekt WHERE pid = '" + pid + "'";
+            HashMap<String, String> projekt = idb.fetchRow(sql);
+            if(projekt != null && !projekt.isEmpty()){
+                jTextFieldPid.setText(projekt.get("pid"));
+                jTextFieldProjektNamn.setText(projekt.get("projektnamn"));
+                jTextFieldBeskrivning.setText(projekt.get("beskrivning"));
+                jTextFieldstartdatum.setText(projekt.get("startdatum"));
+                jTextFieldslutdatum.setText(projekt.get("slutdatum"));
+                jTextFieldkostnad.setText(projekt.get("kostnad"));
+                jTextFieldstatus.setText(projekt.get("status"));
+                jTextFieldprioritet.setText(projekt.get("prioritet"));
+                jTextFieldLand.setText(projekt.get("land"));
+                
+                
+            }else{
+                JOptionPane.showMessageDialog(this, "projektdata kunde inte hämtas");
+            }
+        }catch(InfException ex){
+           JOptionPane.showMessageDialog(this, "något blev fel");
+        }
+
     }//GEN-LAST:event_jComboBoxProjektActionPerformed
+
+    private void jButtonSparaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSparaProjektActionPerformed
+        try{
+            String pid = jTextFieldPid.getText();
+            String projektnamn = jTextFieldProjektNamn.getText();
+            String beskrivning = jTextFieldBeskrivning.getText();
+            String startdatum = jTextFieldstartdatum.getText();
+            String slutdatum = jTextFieldslutdatum.getText();
+            String kostnad = jTextFieldkostnad.getText();
+            String status = jTextFieldstatus.getText();
+            String prioritet = jTextFieldprioritet.getText();
+            String land = jTextFieldLand.getText();
+            
+            String sqlUppdatering = "UPDATE projekt SET " +
+                     "projektnamn = '" + projektnamn + "', " +
+                     "beskrivning = '" + beskrivning + "', " +
+                     "startdatum = '" + startdatum + "', " +
+                     "slutdatum = '" + slutdatum + "', " +
+                     "status = '" + status + "', " +
+                     "prioritet = '" + prioritet + "', " +
+                     "kostnad = '" + kostnad + "', " +
+                     "land = '" + land + "' " +
+                     "WHERE pid = '" + pid + "'";
+            
+            idb.update(sqlUppdatering);
+            
+            JOptionPane.showMessageDialog(this, "Projekt uppgifter har uppdaterats");
+            
+            }catch (InfException ex){
+                JOptionPane.showMessageDialog(this, "Fel vi uppdatering" + ex.getMessage());
+            }
+
+    }//GEN-LAST:event_jButtonSparaProjektActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,10 +451,10 @@ public class ProjektchefMeny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonHandläggare;
     private javax.swing.JButton jButtonPartners;
     private javax.swing.JButton jButtonProjekt;
+    private javax.swing.JButton jButtonSparaProjekt;
     private javax.swing.JButton jButtonStatistik;
     private javax.swing.JComboBox<String> jComboBoxProjekt;
     private javax.swing.JLabel jLabel1;

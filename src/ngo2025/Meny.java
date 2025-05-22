@@ -24,6 +24,7 @@ public class Meny extends javax.swing.JFrame {
         this.inloggadAnvändare=inloggadAnvändare;
         
        initComponents();
+      kontrolleraProjektchefSynlighet();
        jPanelStart.setVisible(true);
        jPanelMinaUppgifter.setVisible(false);
        jPanelProjekt.setVisible(false);
@@ -470,6 +471,23 @@ public class Meny extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void kontrolleraProjektchefSynlighet(){
+       try{
+        String sql = "SELECT pid FROM projekt WHERE projektchef = " +
+               "(SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "')";
+       
+       ArrayList<String> resultat = idb.fetchColumn(sql);
+       
+       
+           bProjektChef.setVisible(resultat != null && !resultat.isEmpty());
+       
+       
+       }catch (InfException ex){
+           bProjektChef.setVisible(false);
+       }
+    }
+
+    
     private void bMinauppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMinauppgifterActionPerformed
         jPanelStart.setVisible(true);
         jPanelMinaUppgifter.setVisible(true);
