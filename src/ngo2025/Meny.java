@@ -98,8 +98,6 @@ public class Meny extends javax.swing.JFrame {
 
         labelinloggadAnvändare.setText("jLabel1");
 
-        jPanelStart.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jLabel2.setText("Mina uppgifter");
 
         txtFornamn.setText("jTextField1");
@@ -209,8 +207,6 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(13, 13, 13))
         );
 
-        jPanelStart.add(jPanelMinaUppgifter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 370));
-
         jLabel3.setText("Hållbarhetsmål");
 
         jTextAreaHållbarhetsmål.setColumns(20);
@@ -239,8 +235,6 @@ public class Meny extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jPanelStart.add(jPanelHållbarhetsmål, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         jLabel4.setText("Personal på min avdelning");
 
@@ -275,11 +269,9 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel4)
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jPanelStart.add(jPanelPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, 358));
 
         jLabel6.setText("Projektstatus");
 
@@ -364,7 +356,28 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        jPanelStart.add(jPanelProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, 358));
+        javax.swing.GroupLayout jPanelStartLayout = new javax.swing.GroupLayout(jPanelStart);
+        jPanelStart.setLayout(jPanelStartLayout);
+        jPanelStartLayout.setHorizontalGroup(
+            jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanelStartLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelHållbarhetsmål, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanelStartLayout.setVerticalGroup(
+            jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanelStartLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanelStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelHållbarhetsmål, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         bMinauppgifter.setText("Mina uppgifter");
         bMinauppgifter.addActionListener(new java.awt.event.ActionListener() {
@@ -451,7 +464,7 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(bProjektChef)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanelStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jPanelStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
