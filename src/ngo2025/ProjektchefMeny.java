@@ -25,6 +25,8 @@ public class ProjektchefMeny extends javax.swing.JFrame {
         this.inloggadAnvändare=inloggadAnvändare;
         
         initComponents();
+       fyllVäljPartnerComboBox();
+        fyllVäljProjektComboBox();
         fyllProjektComboBox();
        jPanel1.setVisible(true);
        jPanel2.setVisible(false);
@@ -224,6 +226,11 @@ public class ProjektchefMeny extends javax.swing.JFrame {
         });
 
         jButtonläggtillPartner.setText("Lägg till");
+        jButtonläggtillPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonläggtillPartnerActionPerformed(evt);
+            }
+        });
 
         jButtontabortpartner.setText("Ta bort");
         jButtontabortpartner.addActionListener(new java.awt.event.ActionListener() {
@@ -430,7 +437,63 @@ private void fyllProjektComboBox() {
         JOptionPane.showMessageDialog(this, "Kunde inte hämta projekt: " + e.getMessage());
     }
 }
-   
+
+private void fyllVäljProjektComboBox() {
+    try {
+        jComboBoxVäljProjekt.removeAllItems();
+
+        String aid = idb.fetchSingle("SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "'");
+        String sql = "SELECT projektnamn FROM projekt WHERE projektchef = '" + aid + "'";
+        ArrayList<HashMap<String, String>> projektLista = idb.fetchRows(sql);
+
+        for (HashMap<String, String> projekt : projektLista) {
+            jComboBoxVäljProjekt.addItem(projekt.get("projektnamn"));
+        }
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta projekt: " + e.getMessage());
+    }
+}
+
+private void fyllPartnerLista(String projektnamn) {
+    try {
+        DefaultListModel<String> modell = new DefaultListModel<>();
+
+        String aid = idb.fetchSingle("SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "'");
+        String pid = idb.fetchSingle("SELECT pid FROM projekt WHERE projektnamn = '" + projektnamn + "' AND projektchef = '" + aid + "'");
+
+        String sql =  "SELECT partner.pid, partner.namn FROM partner " +
+             "JOIN projekt_partner ON partner.pid = projekt_partner.partner_pid " +
+             "WHERE projekt_partner.pid = '" + pid + "'";
+
+        ArrayList<HashMap<String, String>> partnerLista = idb.fetchRows(sql);
+
+        for (HashMap<String, String> partner : partnerLista) {
+            modell.addElement(partner.get("pid") + " - " + partner.get("namn"));
+        }
+
+        jListPartners.setModel(modell);
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta partners: " + e.getMessage());
+    }
+}
+   private void fyllVäljPartnerComboBox() {
+    try {
+        jComboBoxVäljPartner.removeAllItems();
+
+        String sql = "SELECT pid, namn FROM partner";
+        ArrayList<HashMap<String, String>> partnerLista = idb.fetchRows(sql);
+
+        for (HashMap<String, String> partner : partnerLista) {
+            String visning = partner.get("pid") + " - " + partner.get("namn");
+            jComboBoxVäljPartner.addItem(visning);
+        }
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta partnerdata: " + e.getMessage());
+    }
+}
     
     private void jButtonProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProjektActionPerformed
        jPanel1.setVisible(true);
@@ -540,17 +603,56 @@ private void fyllProjektComboBox() {
     }//GEN-LAST:event_jButtonSparaProjektActionPerformed
 
     private void jComboBoxVäljProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxVäljProjektActionPerformed
-        
+         String projektnamn = (String) jComboBoxVäljProjekt.getSelectedItem();
+    if (projektnamn != null) {
+        fyllPartnerLista(projektnamn);
+    }
     
     }//GEN-LAST:event_jComboBoxVäljProjektActionPerformed
 
     private void jButtontabortpartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtontabortpartnerActionPerformed
- 
+     try {
+        String valdRad = jListPartners.getSelectedValue();
+        String projektnamn = (String) jComboBoxVäljProjekt.getSelectedItem();
+        if (valdRad == null || projektnamn == null) return;
+
+        String partnerId = valdRad.split(" - ")[0].trim();
+        String aid = idb.fetchSingle("SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "'");
+        String pid = idb.fetchSingle("SELECT pid FROM projekt WHERE projektnamn = '" + projektnamn + "' AND projektchef = '" + aid + "'");
+                     
+        String sql = "DELETE FROM projekt_partner WHERE pid = '" + pid + "' AND partner_pid = '" + partnerId + "'";
+        idb.delete(sql);
+
+        fyllPartnerLista(projektnamn);
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Kunde inte ta bort partner: " + e.getMessage());
+    }
     }//GEN-LAST:event_jButtontabortpartnerActionPerformed
 
     private void jComboBoxVäljPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxVäljPartnerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxVäljPartnerActionPerformed
+
+    private void jButtonläggtillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonläggtillPartnerActionPerformed
+        try {
+        String partnerRad = (String) jComboBoxVäljPartner.getSelectedItem();
+        String projektnamn = (String) jComboBoxVäljProjekt.getSelectedItem();
+        if (partnerRad == null || projektnamn == null) return;
+
+        String partnerId = partnerRad.split(" - ")[0].trim();
+        String aid = idb.fetchSingle("SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "'");
+        String pid = idb.fetchSingle("SELECT pid FROM projekt WHERE projektnamn = '" + projektnamn + "' AND projektchef = '" + aid + "'");
+
+        String sql = "INSERT INTO projekt_partner (pid, partner_pid) VALUES ('" + pid + "', '" + partnerId + "')";
+        idb.insert(sql);
+
+        fyllPartnerLista(projektnamn);
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Kunde inte lägga till partner: " + e.getMessage());
+    }
+    }//GEN-LAST:event_jButtonläggtillPartnerActionPerformed
 
     /**
      * @param args the command line arguments
