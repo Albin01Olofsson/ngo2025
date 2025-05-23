@@ -25,14 +25,12 @@ public class ProjektchefMeny extends javax.swing.JFrame {
         this.inloggadAnvändare=inloggadAnvändare;
         
         initComponents();
-       fyllVäljPartnerComboBox();
-        fyllVäljProjektComboBox();
-        fyllProjektComboBox();
-       jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(false);
+       
+       jPanelstart.setVisible(true);
+       jPanelprojekt.setVisible(false);
+       jPanelpartners.setVisible(false);
+       jPanelhandläggare.setVisible(false);
+       jPanelstatistik.setVisible(false);
         jLabelAnvändare.setText(inloggadAnvändare);
     }
 
@@ -50,8 +48,8 @@ public class ProjektchefMeny extends javax.swing.JFrame {
         jButtonHandläggare = new javax.swing.JButton();
         jButtonStatistik = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelstart = new javax.swing.JPanel();
+        jPanelprojekt = new javax.swing.JPanel();
         jComboBoxProjekt = new javax.swing.JComboBox<>();
         jTextFieldPid = new javax.swing.JTextField();
         jTextFieldProjektNamn = new javax.swing.JTextField();
@@ -65,8 +63,8 @@ public class ProjektchefMeny extends javax.swing.JFrame {
         jButtonSparaProjekt = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanelstatistik = new javax.swing.JPanel();
+        jPanelpartners = new javax.swing.JPanel();
         jComboBoxVäljProjekt = new javax.swing.JComboBox<>();
         jButtonläggtillPartner = new javax.swing.JButton();
         jButtontabortpartner = new javax.swing.JButton();
@@ -76,7 +74,15 @@ public class ProjektchefMeny extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jComboBoxVäljPartner = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanelhandläggare = new javax.swing.JPanel();
+        jComboBoxVäljProjektHand = new javax.swing.JComboBox<>();
+        jComboBoxVäljHandläggare = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jListHandläggare = new javax.swing.JList<>();
+        jButtontaborthandläggare = new javax.swing.JButton();
+        jButtonläggtillhandläggare = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabelAnvändare = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -147,23 +153,23 @@ public class ProjektchefMeny extends javax.swing.JFrame {
 
         jLabel3.setText("Välj Projekt");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelprojektLayout = new javax.swing.GroupLayout(jPanelprojekt);
+        jPanelprojekt.setLayout(jPanelprojektLayout);
+        jPanelprojektLayout.setHorizontalGroup(
+            jPanelprojektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelprojektLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanelprojektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelprojektLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelprojektLayout.createSequentialGroup()
+                        .addGroup(jPanelprojektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonSparaProjekt))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelprojektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldprioritet, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,15 +181,15 @@ public class ProjektchefMeny extends javax.swing.JFrame {
                             .addComponent(jTextFieldPid, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(86, 86, 86))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelprojektLayout.setVerticalGroup(
+            jPanelprojektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelprojektLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelprojektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelprojektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldPid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
@@ -201,20 +207,20 @@ public class ProjektchefMeny extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldprioritet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelprojektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSparaProjekt)
                     .addComponent(jTextFieldLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelstatistikLayout = new javax.swing.GroupLayout(jPanelstatistik);
+        jPanelstatistik.setLayout(jPanelstatistikLayout);
+        jPanelstatistikLayout.setHorizontalGroup(
+            jPanelstatistikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 390, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelstatistikLayout.setVerticalGroup(
+            jPanelstatistikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 333, Short.MAX_VALUE)
         );
 
@@ -259,44 +265,44 @@ public class ProjektchefMeny extends javax.swing.JFrame {
 
         jLabel6.setText("Välj partner att lägga till");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelpartnersLayout = new javax.swing.GroupLayout(jPanelpartners);
+        jPanelpartners.setLayout(jPanelpartnersLayout);
+        jPanelpartnersLayout.setHorizontalGroup(
+            jPanelpartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelpartnersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtontabortpartner)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonläggtillPartner)
                 .addContainerGap())
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelpartnersLayout.createSequentialGroup()
+                .addGroup(jPanelpartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelpartnersLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jComboBoxVäljProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanelpartnersLayout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jComboBoxVäljPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanelpartnersLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanelpartnersLayout.setVerticalGroup(
+            jPanelpartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelpartnersLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelpartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelpartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxVäljProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxVäljPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
@@ -304,67 +310,136 @@ public class ProjektchefMeny extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelpartnersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonläggtillPartner)
                     .addComponent(jButtontabortpartner))
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 242, Short.MAX_VALUE)
+        jComboBoxVäljProjektHand.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxVäljProjektHand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxVäljProjektHandActionPerformed(evt);
+            }
+        });
+
+        jComboBoxVäljHandläggare.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jListHandläggare.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jListHandläggare);
+
+        jButtontaborthandläggare.setText("Ta bort handläggare");
+        jButtontaborthandläggare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtontaborthandläggareActionPerformed(evt);
+            }
+        });
+
+        jButtonläggtillhandläggare.setText("Lägg till handläggare");
+        jButtonläggtillhandläggare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonläggtillhandläggareActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Välj projekt");
+
+        jLabel8.setText("Välj handläggare");
+
+        javax.swing.GroupLayout jPanelhandläggareLayout = new javax.swing.GroupLayout(jPanelhandläggare);
+        jPanelhandläggare.setLayout(jPanelhandläggareLayout);
+        jPanelhandläggareLayout.setHorizontalGroup(
+            jPanelhandläggareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelhandläggareLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2))
+            .addGroup(jPanelhandläggareLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtontaborthandläggare)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonläggtillhandläggare)
+                .addContainerGap())
+            .addGroup(jPanelhandläggareLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanelhandläggareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelhandläggareLayout.createSequentialGroup()
+                        .addComponent(jComboBoxVäljProjektHand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                        .addComponent(jComboBoxVäljHandläggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelhandläggareLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8)))
+                .addGap(26, 26, 26))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 333, Short.MAX_VALUE)
+        jPanelhandläggareLayout.setVerticalGroup(
+            jPanelhandläggareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelhandläggareLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanelhandläggareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelhandläggareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxVäljProjektHand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxVäljHandläggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(jPanelhandläggareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtontaborthandläggare)
+                    .addComponent(jButtonläggtillhandläggare))
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelstartLayout = new javax.swing.GroupLayout(jPanelstart);
+        jPanelstart.setLayout(jPanelstartLayout);
+        jPanelstartLayout.setHorizontalGroup(
+            jPanelstartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelstartLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelprojekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelstartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelstartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelstatistik, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelstartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelstartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelpartners, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelstartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelstartLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelhandläggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        jPanelstartLayout.setVerticalGroup(
+            jPanelstartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelstartLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelprojekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelstartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelstartLayout.createSequentialGroup()
                     .addGap(12, 12, 12)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelstatistik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(12, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelstartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelstartLayout.createSequentialGroup()
                     .addGap(12, 12, 12)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelpartners, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(12, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelstartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelstartLayout.createSequentialGroup()
                     .addGap(12, 12, 12)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelhandläggare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(12, Short.MAX_VALUE)))
         );
 
@@ -390,7 +465,7 @@ public class ProjektchefMeny extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabelAnvändare)))
                 .addGap(30, 30, 30)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelstart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -411,12 +486,13 @@ public class ProjektchefMeny extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelstart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private void fyllProjektComboBox() {
+//projektknappen 
+    private void fyllProjektComboBox() {
     try {
         jComboBoxProjekt.removeAllItems();
 
@@ -433,11 +509,11 @@ private void fyllProjektComboBox() {
             jComboBoxProjekt.addItem(namn);  // Lägg bara till projektnamn
         }
 
-    } catch (InfException e) {
-        JOptionPane.showMessageDialog(this, "Kunde inte hämta projekt: " + e.getMessage());
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta projekt: " + ex.getMessage());
     }
 }
-
+//partne knappen
 private void fyllVäljProjektComboBox() {
     try {
         jComboBoxVäljProjekt.removeAllItems();
@@ -450,11 +526,11 @@ private void fyllVäljProjektComboBox() {
             jComboBoxVäljProjekt.addItem(projekt.get("projektnamn"));
         }
 
-    } catch (InfException e) {
-        JOptionPane.showMessageDialog(this, "Kunde inte hämta projekt: " + e.getMessage());
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta projekt: " + ex.getMessage());
     }
 }
-
+//jComboBoxVäljProjektActionPerformed
 private void fyllPartnerLista(String projektnamn) {
     try {
         DefaultListModel<String> modell = new DefaultListModel<>();
@@ -474,11 +550,12 @@ private void fyllPartnerLista(String projektnamn) {
 
         jListPartners.setModel(modell);
 
-    } catch (InfException e) {
-        JOptionPane.showMessageDialog(this, "Kunde inte hämta partners: " + e.getMessage());
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta partners: " + ex.getMessage());
     }
 }
-   private void fyllVäljPartnerComboBox() {
+  //partnerknappen
+    private void fyllVäljPartnerComboBox() {
     try {
         jComboBoxVäljPartner.removeAllItems();
 
@@ -490,41 +567,114 @@ private void fyllPartnerLista(String projektnamn) {
             jComboBoxVäljPartner.addItem(visning);
         }
 
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta partnerdata: " + ex.getMessage());
+    }
+}   //handläggarknappen
+   private void fyllComboBoxVäljProjektHand() {
+    try {
+         jComboBoxVäljProjektHand.removeAllItems();
+
+        String sql = "SELECT projektnamn FROM projekt " +
+                     "WHERE projektchef = (SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "')";
+        ArrayList<HashMap<String, String>> projektLista = idb.fetchRows(sql);
+
+        for (HashMap<String, String> projekt : projektLista) {
+            String projektnamn = projekt.get("projektnamn");
+             jComboBoxVäljProjektHand.addItem(projektnamn);
+        }
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta projekt: " + ex.getMessage());
+    }
+}
+   //jComboBoxVäljProjektHand
+   private void fyllListaMedHandlaggare(String Projektnamn) {
+    try {
+        DefaultListModel<String> modell = new DefaultListModel<>();
+
+        String projektId = idb.fetchSingle(
+                "SELECT pid FROM projekt " +
+                "WHERE projektnamn = '" + Projektnamn + "' " +
+                "AND projektchef = (SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "')"
+        );
+
+        String sql = "SELECT anstalld.aid AS aid, anstalld.fornamn AS fornamn, anstalld.efternamn AS efternamn " +
+                     "FROM anstalld " +
+                     "JOIN ans_proj ON anstalld.aid = ans_proj.aid " +
+                     "JOIN handlaggare ON anstalld.aid = handlaggare.aid " +
+                     "WHERE ans_proj.pid = '" + projektId + "'";
+
+        ArrayList<HashMap<String, String>> resultat = idb.fetchRows(sql);
+
+        for (HashMap<String, String> rad : resultat) {
+            String visning = rad.get("aid") + " - " + rad.get("fornamn") + " " + rad.get("efternamn");
+            modell.addElement(visning);
+        }
+
+        jListHandläggare.setModel(modell);
+
     } catch (InfException e) {
-        JOptionPane.showMessageDialog(this, "Kunde inte hämta partnerdata: " + e.getMessage());
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta handläggare: " + e.getMessage());
+    }
+}
+   //handläggarknappen
+   private void fyllComboBoxVäljHandlaggare() {
+    try {
+        jComboBoxVäljHandläggare.removeAllItems();
+
+        String sql = "SELECT anstalld.aid AS aid, anstalld.fornamn AS fornamn, anstalld.efternamn AS efternamn " +
+                     "FROM anstalld " +
+                     "JOIN handlaggare ON anstalld.aid = handlaggare.aid";
+
+        ArrayList<HashMap<String, String>> handlaggareLista = idb.fetchRows(sql);
+
+        for (HashMap<String, String> rad : handlaggareLista) {
+            String visning = rad.get("aid") + " - " + rad.get("fornamn") + " " + rad.get("efternamn");
+            jComboBoxVäljHandläggare.addItem(visning);
+        }
+
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta handläggare: " + ex.getMessage());
     }
 }
     
     private void jButtonProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProjektActionPerformed
-       jPanel1.setVisible(true);
-       jPanel2.setVisible(true);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(false);
+       jPanelstart.setVisible(true);
+       jPanelprojekt.setVisible(true);
+       jPanelpartners.setVisible(false);
+       jPanelhandläggare.setVisible(false);
+       jPanelstatistik.setVisible(false);
+       fyllProjektComboBox();
+       
+       
     }//GEN-LAST:event_jButtonProjektActionPerformed
 
     private void jButtonPartnersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPartnersActionPerformed
-       jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(true);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(false);
+       jPanelstart.setVisible(true);
+       jPanelprojekt.setVisible(false);
+       jPanelpartners.setVisible(true);
+       jPanelhandläggare.setVisible(false);
+       jPanelstatistik.setVisible(false);
+       fyllVäljProjektComboBox();
+       fyllVäljPartnerComboBox();
     }//GEN-LAST:event_jButtonPartnersActionPerformed
 
     private void jButtonHandläggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHandläggareActionPerformed
-        jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(true);
-       jPanel5.setVisible(false);
+        jPanelstart.setVisible(true);
+       jPanelprojekt.setVisible(false);
+       jPanelpartners.setVisible(false);
+       jPanelhandläggare.setVisible(true);
+       jPanelstatistik.setVisible(false);
+       fyllComboBoxVäljProjektHand();
+       fyllComboBoxVäljHandlaggare();
     }//GEN-LAST:event_jButtonHandläggareActionPerformed
 
     private void jButtonStatistikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStatistikActionPerformed
-        jPanel1.setVisible(true);
-       jPanel2.setVisible(false);
-       jPanel3.setVisible(false);
-       jPanel4.setVisible(false);
-       jPanel5.setVisible(true);
+        jPanelstart.setVisible(true);
+       jPanelprojekt.setVisible(false);
+       jPanelpartners.setVisible(false);
+       jPanelhandläggare.setVisible(false);
+       jPanelstatistik.setVisible(true);
     }//GEN-LAST:event_jButtonStatistikActionPerformed
 
     private void jComboBoxProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProjektActionPerformed
@@ -625,8 +775,8 @@ private void fyllPartnerLista(String projektnamn) {
 
         fyllPartnerLista(projektnamn);
 
-    } catch (InfException e) {
-        JOptionPane.showMessageDialog(this, "Kunde inte ta bort partner: " + e.getMessage());
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(this, "Kunde inte ta bort partner: " + ex.getMessage());
     }
     }//GEN-LAST:event_jButtontabortpartnerActionPerformed
 
@@ -649,10 +799,58 @@ private void fyllPartnerLista(String projektnamn) {
 
         fyllPartnerLista(projektnamn);
 
-    } catch (InfException e) {
-        JOptionPane.showMessageDialog(this, "Kunde inte lägga till partner: " + e.getMessage());
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(this, "Kunde inte lägga till partner: " + ex.getMessage());
     }
     }//GEN-LAST:event_jButtonläggtillPartnerActionPerformed
+
+    private void jButtonläggtillhandläggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonläggtillhandläggareActionPerformed
+       try {
+        String projektnamn = (String) jComboBoxVäljProjektHand.getSelectedItem();
+        String valdRad = (String) jComboBoxVäljHandläggare.getSelectedItem();
+        if (projektnamn == null || valdRad == null) return;
+
+        String aid = valdRad.split(" - ")[0].trim();
+
+        String pid = idb.fetchSingle("SELECT pid FROM projekt WHERE projektnamn = '" + projektnamn + "'");
+
+        String sql = "INSERT INTO ans_proj (aid, pid) VALUES ('" + aid + "', '" + pid + "')";
+        idb.insert(sql);
+
+        fyllListaMedHandlaggare(projektnamn);
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Kunde inte lägga till handläggare: " + e.getMessage());
+    }
+    }//GEN-LAST:event_jButtonläggtillhandläggareActionPerformed
+
+    private void jButtontaborthandläggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtontaborthandläggareActionPerformed
+      try {
+        String projektnamn = (String) jComboBoxVäljProjektHand.getSelectedItem();
+        String valdRad = jListHandläggare.getSelectedValue();
+        if (projektnamn == null || valdRad == null) return;
+
+        String aid = valdRad.split(" - ")[0].trim();
+        String pid = idb.fetchSingle("SELECT pid FROM projekt WHERE projektnamn = '" + projektnamn + "'");
+
+        String sql = "DELETE FROM ans_proj WHERE aid = '" + aid + "' AND pid = '" + pid + "'";
+        idb.delete(sql);
+
+        fyllListaMedHandlaggare(projektnamn);
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Kunde inte ta bort handläggare: " + e.getMessage());
+    }
+    }//GEN-LAST:event_jButtontaborthandläggareActionPerformed
+
+    private void jComboBoxVäljProjektHandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxVäljProjektHandActionPerformed
+        
+    String valtProjekt = (String) jComboBoxVäljProjektHand.getSelectedItem();
+    if (valtProjekt != null && !valtProjekt.isEmpty()) {
+        fyllListaMedHandlaggare(valtProjekt);
+    }
+
+    }//GEN-LAST:event_jComboBoxVäljProjektHandActionPerformed
 
     /**
      * @param args the command line arguments
@@ -696,24 +894,32 @@ private void fyllPartnerLista(String projektnamn) {
     private javax.swing.JButton jButtonSparaProjekt;
     private javax.swing.JButton jButtonStatistik;
     private javax.swing.JButton jButtonläggtillPartner;
+    private javax.swing.JButton jButtonläggtillhandläggare;
+    private javax.swing.JButton jButtontaborthandläggare;
     private javax.swing.JButton jButtontabortpartner;
     private javax.swing.JComboBox<String> jComboBoxProjekt;
+    private javax.swing.JComboBox<String> jComboBoxVäljHandläggare;
     private javax.swing.JComboBox<String> jComboBoxVäljPartner;
     private javax.swing.JComboBox<String> jComboBoxVäljProjekt;
+    private javax.swing.JComboBox<String> jComboBoxVäljProjektHand;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelAnvändare;
+    private javax.swing.JList<String> jListHandläggare;
     private javax.swing.JList<String> jListPartners;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanelhandläggare;
+    private javax.swing.JPanel jPanelpartners;
+    private javax.swing.JPanel jPanelprojekt;
+    private javax.swing.JPanel jPanelstart;
+    private javax.swing.JPanel jPanelstatistik;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextFieldBeskrivning;
     private javax.swing.JTextField jTextFieldLand;
     private javax.swing.JTextField jTextFieldPid;
