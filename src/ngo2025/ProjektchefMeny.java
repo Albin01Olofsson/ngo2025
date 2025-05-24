@@ -64,6 +64,8 @@ public class ProjektchefMeny extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanelstatistik = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListStatistik = new javax.swing.JList<>();
         jPanelpartners = new javax.swing.JPanel();
         jComboBoxVäljProjekt = new javax.swing.JComboBox<>();
         jButtonläggtillPartner = new javax.swing.JButton();
@@ -213,15 +215,28 @@ public class ProjektchefMeny extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+        jListStatistik.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jListStatistik);
+
         javax.swing.GroupLayout jPanelstatistikLayout = new javax.swing.GroupLayout(jPanelstatistik);
         jPanelstatistik.setLayout(jPanelstatistikLayout);
         jPanelstatistikLayout.setHorizontalGroup(
             jPanelstatistikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(jPanelstatistikLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanelstatistikLayout.setVerticalGroup(
             jPanelstatistikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 333, Short.MAX_VALUE)
+            .addGroup(jPanelstatistikLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jComboBoxVäljProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -675,6 +690,39 @@ private void fyllPartnerLista(String projektnamn) {
        jPanelpartners.setVisible(false);
        jPanelhandläggare.setVisible(false);
        jPanelstatistik.setVisible(true);
+       
+       try {
+        DefaultListModel<String> modell = new DefaultListModel<>();
+        double totalKostnad = 0;
+
+        // Hämta projektchefens AID
+        String sqlAid = "SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
+        String aid = idb.fetchSingle(sqlAid);
+
+        // Hämta projektnamn och kostnad
+        String sql = "SELECT projektnamn, kostnad FROM projekt WHERE projektchef = '" + aid + "'";
+        ArrayList<HashMap<String, String>> projektLista = idb.fetchRows(sql);
+
+        if (projektLista == null || projektLista.isEmpty()) {
+            modell.addElement("Inga projekt hittades.");
+        } else {
+            for (HashMap<String, String> projekt : projektLista) {
+                String namn = projekt.get("projektnamn");
+                double kostnad = Double.parseDouble(projekt.get("kostnad"));
+                totalKostnad += kostnad;
+
+                modell.addElement(namn + " – " + kostnad + " kr");
+            }
+
+            modell.addElement("––––––––––––––––––––––––––––––");
+            modell.addElement("Totalkostnad: " + totalKostnad + " kr");
+        }
+
+        jListStatistik.setModel(modell);
+
+    } catch (InfException | NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Kunde inte hämta statistik: " + e.getMessage());
+    }
     }//GEN-LAST:event_jButtonStatistikActionPerformed
 
     private void jComboBoxProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProjektActionPerformed
@@ -913,6 +961,7 @@ private void fyllPartnerLista(String projektnamn) {
     private javax.swing.JLabel jLabelAnvändare;
     private javax.swing.JList<String> jListHandläggare;
     private javax.swing.JList<String> jListPartners;
+    private javax.swing.JList<String> jListStatistik;
     private javax.swing.JPanel jPanelhandläggare;
     private javax.swing.JPanel jPanelpartners;
     private javax.swing.JPanel jPanelprojekt;
@@ -920,6 +969,7 @@ private void fyllPartnerLista(String projektnamn) {
     private javax.swing.JPanel jPanelstatistik;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextFieldBeskrivning;
     private javax.swing.JTextField jTextFieldLand;
     private javax.swing.JTextField jTextFieldPid;
