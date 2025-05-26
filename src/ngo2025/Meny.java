@@ -581,6 +581,16 @@ public class Meny extends javax.swing.JFrame {
             String adress = txtAdress.getText();
             String telefon = txtTelefon.getText();
             
+            if (!Validering.isNotEmpty(fornamn) || !Validering.isNotEmpty(efternamn) || !Validering.isNotEmpty(adress)) {
+            JOptionPane.showMessageDialog(this, "Fält får inte vara tomma!");
+            return;
+        }
+
+        if (!Validering.isValidPhone(telefon)) {
+            JOptionPane.showMessageDialog(this, "Ogiltigt telefonnummer. Endast siffror, bindestreck eller mellanslag tillåts.");
+            return;
+        }
+            
             String sql ="UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + efternamn +
                      "', adress = '" + adress + "', telefon = '" + telefon +
                      "' WHERE epost = '" + inloggadAnvändare + "'";
@@ -687,10 +697,10 @@ public class Meny extends javax.swing.JFrame {
           String frånDatum= jTextFieldFråndatum.getText().trim();
           String tillDatum = jTextFieldTilldatum.getText().trim();
           
-          if(frånDatum.isEmpty()|| tillDatum.isEmpty()){
-              JOptionPane.showMessageDialog(this,  "Fyll i både från- och till-datum i formatet yyyy-MM-dd.");
-              return;
-          }
+          if (!Validering.isValidDate(frånDatum) || !Validering.isValidDate(tillDatum)) {
+    JOptionPane.showMessageDialog(this, "Datum måste vara i formatet yyyy-MM-dd.");
+    return;
+}
           String sqlAVD = "SELECT avdelning FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
           String avdelning = idb.fetchSingle(sqlAVD);
           

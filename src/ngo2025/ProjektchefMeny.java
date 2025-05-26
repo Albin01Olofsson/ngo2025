@@ -768,7 +768,9 @@ private void fyllPartnerLista(String projektnamn) {
     }//GEN-LAST:event_jComboBoxProjektActionPerformed
 
     private void jButtonSparaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSparaProjektActionPerformed
-        try{
+       
+        
+       try{
             String pid = jTextFieldPid.getText();
             String projektnamn = jTextFieldProjektNamn.getText();
             String beskrivning = jTextFieldBeskrivning.getText();
@@ -778,6 +780,20 @@ private void fyllPartnerLista(String projektnamn) {
             String status = jTextFieldstatus.getText();
             String prioritet = jTextFieldprioritet.getText();
             String land = jTextFieldLand.getText();
+            
+            
+            if (!Validering.isNotEmpty(projektnamn) || !Validering.isNotEmpty(beskrivning) ||
+            !Validering.isNotEmpty(startdatum) || !Validering.isNotEmpty(slutdatum) ||
+            !Validering.isNotEmpty(kostnad) || !Validering.isNotEmpty(status) ||
+            !Validering.isNotEmpty(prioritet) || !Validering.isNotEmpty(land)) {
+            JOptionPane.showMessageDialog(this, "Alla fält måste fyllas i.");
+            return;
+        }
+
+        if (!Validering.isValidDate(startdatum) || !Validering.isValidDate(slutdatum)) {
+            JOptionPane.showMessageDialog(this, "Datum måste vara i formatet yyyy-MM-dd.");
+            return;
+        }
             
             String sqlUppdatering = "UPDATE projekt SET " +
                      "projektnamn = '" + projektnamn + "', " +

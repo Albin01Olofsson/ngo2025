@@ -96,7 +96,19 @@ public class Inloggning extends javax.swing.JFrame {
        String ePost = textEpost.getText();
     String losenord = textLosenord.getText();
 
-    try {
+   if (!Validering.isNotEmpty(ePost) || !Validering.isNotEmpty(losenord)) {
+    labelFelmeddelande.setText("Fält får inte vara tomma.");
+    labelFelmeddelande.setVisible(true);
+    return;
+}
+
+if (!Validering.isValidEmail(ePost)) {
+    labelFelmeddelande.setText("Ogiltig e-postadress.");
+    labelFelmeddelande.setVisible(true);
+    return;
+}
+    
+try {
         // Hämta lösenord från databasen
         String losenFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
         String dbLosen = idb.fetchSingle(losenFraga);
