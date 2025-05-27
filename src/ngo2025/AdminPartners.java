@@ -206,6 +206,22 @@ try {
         String adress = adressField.getText();
         String branch = branchField.getText();
         String stad = stadField.getText();
+       
+        
+        if (!Validering.isNotEmpty(pid) || !Validering.isNotEmpty(namn) || !Validering.isNotEmpty(kontaktperson) ||
+    !Validering.isNotEmpty(kontaktepost) || !Validering.isNotEmpty(telefon) || !Validering.isNotEmpty(adress) ||
+    !Validering.isNotEmpty(branch) || !Validering.isNotEmpty(stad)) {
+    JOptionPane.showMessageDialog(this, "Alla fält måste fyllas i.");
+    return;
+}
+        if (!Validering.isValidEmail(kontaktepost)) {
+    JOptionPane.showMessageDialog(this, "Ogiltig e-postadress.");
+    return;
+}
+    if (!Validering.isValidPhone(telefon)) {
+    JOptionPane.showMessageDialog(this, "Ogiltigt telefonnummer.");
+    return;
+}
         
         String sql = "INSERT INTO partner (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad) "
                    + "VALUES ('" + pid + "', '" + namn + "', '" + kontaktperson + "', '" + kontaktepost + "', '" + telefon + "', '" + adress + "', '" + branch + "', '" + stad + "')";
@@ -242,6 +258,21 @@ try {
         String branch = branchField.getText();
         String stad = stadField.getText();
 
+         if (!Validering.isNotEmpty(pid) || !Validering.isNotEmpty(namn) || !Validering.isNotEmpty(kontaktperson) ||
+    !Validering.isNotEmpty(kontaktepost) || !Validering.isNotEmpty(telefon) || !Validering.isNotEmpty(adress) ||
+    !Validering.isNotEmpty(branch) || !Validering.isNotEmpty(stad)) {
+    JOptionPane.showMessageDialog(this, "Alla fält måste fyllas i.");
+    return;
+}
+        if (!Validering.isValidEmail(kontaktepost)) {
+    JOptionPane.showMessageDialog(this, "Ogiltig e-postadress.");
+    return;
+}
+    if (!Validering.isValidPhone(telefon)) {
+    JOptionPane.showMessageDialog(this, "Ogiltigt telefonnummer.");
+    return;
+}
+        
         String sql = "UPDATE partner SET "
                    + "pid = '" + pid + "', "
                    + "namn = '" + namn + "', "
