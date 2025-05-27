@@ -5,6 +5,7 @@
 package ngo2025;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author albin
@@ -12,10 +13,12 @@ import oru.inf.InfException;
 public class AdminPartners extends javax.swing.JFrame {
      private InfDB idb;
      private String inloggadAnvändare;
+     private javax.swing.JTextField idField;
    
     public AdminPartners(InfDB idb,String inloggadAnvändare) {
         this.idb=idb;
         this.inloggadAnvändare=inloggadAnvändare;
+        
         initComponents();
         jLabelAnvändare.setText(inloggadAnvändare);
     }
@@ -30,30 +33,269 @@ public class AdminPartners extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelAnvändare = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        bLaggTillPartner = new javax.swing.JButton();
+        bAndraUppgifter = new javax.swing.JButton();
+        bTaBortPartner = new javax.swing.JButton();
+        pidField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        namnField = new javax.swing.JTextField();
+        kontaktpersonField = new javax.swing.JTextField();
+        kontaktepostField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        telefonField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        adressField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        branchField = new javax.swing.JTextField();
+        stadField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelAnvändare.setText("jLabel1");
+
+        jLabel1.setText("Partners meny");
+
+        bLaggTillPartner.setText("Lägg till partner");
+        bLaggTillPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLaggTillPartnerActionPerformed(evt);
+            }
+        });
+
+        bAndraUppgifter.setText("Ändra uppgifter");
+        bAndraUppgifter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAndraUppgifterActionPerformed(evt);
+            }
+        });
+
+        bTaBortPartner.setText("Ta bort partner");
+        bTaBortPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bTaBortPartnerActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("PID");
+
+        jLabel3.setText("Namn");
+
+        jLabel4.setText("Kontaktperson");
+
+        jLabel5.setText("Kontaktepost");
+
+        jLabel6.setText("Telefon");
+
+        jLabel7.setText("Adress");
+
+        jLabel8.setText("Branch");
+
+        jLabel9.setText("Stad");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(jLabelAnvändare)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(40, 40, 40)
+                                .addComponent(bLaggTillPartner))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelAnvändare)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bTaBortPartner)
+                                    .addComponent(bAndraUppgifter)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(kontaktepostField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pidField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(namnField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(kontaktpersonField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(telefonField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(stadField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(branchField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabelAnvändare)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(bLaggTillPartner))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAnvändare)
+                    .addComponent(bAndraUppgifter))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bTaBortPartner)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addComponent(telefonField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(namnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel7)
+                    .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kontaktpersonField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel8)
+                    .addComponent(branchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kontaktepostField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(stadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLaggTillPartnerActionPerformed
+        // TODO add your handling code here:
+try {
+        String pid = pidField.getText();
+        String namn = namnField.getText();
+        String kontaktperson = kontaktpersonField.getText();
+        String kontaktepost = kontaktepostField.getText();
+        String telefon = telefonField.getText();
+        String adress = adressField.getText();
+        String branch = branchField.getText();
+        String stad = stadField.getText();
+        
+        String sql = "INSERT INTO partner (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad) "
+                   + "VALUES ('" + pid + "', '" + namn + "', '" + kontaktperson + "', '" + kontaktepost + "', '" + telefon + "', '" + adress + "', '" + branch + "', '" + stad + "')";
+        
+        idb.insert(sql);
+        JOptionPane.showMessageDialog(null, "Partner tillagd!");
+        
+        // Rensa fälten
+        pidField.setText("");
+        namnField.setText("");
+        kontaktpersonField.setText("");
+        kontaktepostField.setText("");
+        telefonField.setText("");
+        adressField.setText("");
+        branchField.setText("");
+        stadField.setText("");
+        
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(null, "Fel vid tillägg av partner: " + e.getMessage());
+    }
+
+    }//GEN-LAST:event_bLaggTillPartnerActionPerformed
+
+    private void bAndraUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAndraUppgifterActionPerformed
+        // TODO add your handling code here:
+try {
+        String pid = pidField.getText();
+        String namn = namnField.getText();
+        String kontaktperson = kontaktpersonField.getText();
+        String kontaktepost = kontaktepostField.getText();
+        String telefon = telefonField.getText();
+        String adress = adressField.getText();
+        String branch = branchField.getText();
+        String stad = stadField.getText();
+
+        String sql = "UPDATE partner SET "
+                   + "pid = '" + pid + "', "
+                   + "namn = '" + namn + "', "
+                   + "kontaktperson = '" + kontaktperson + "', "
+                   + "kontaktepost = '" + kontaktepost + "', "
+                   + "telefon = '" + telefon + "', "
+                   + "adress = '" + adress + "', "
+                   + "branch = '" + branch + "', "
+                   + "stad = '" + stad + "' "
+                   + "WHERE pid = " + pid;
+
+        idb.update(sql);
+        JOptionPane.showMessageDialog(null, "Uppgifter uppdaterade!");
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(null, "Fel vid uppdatering: " + e.getMessage());
+    }
+
+    }//GEN-LAST:event_bAndraUppgifterActionPerformed
+
+    private void bTaBortPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTaBortPartnerActionPerformed
+        // TODO add your handling code here:
+try {
+        String pid = pidField.getText();
+
+        // Kontrollera att fältet inte är tomt
+        if (pid.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange ett PID för att ta bort en partner.");
+            return;
+        }
+
+        // Bekräftelse innan borttagning
+        int bekräfta = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort en partner med PID: " + pid + "?", "Bekräfta borttagning", JOptionPane.YES_NO_OPTION);
+        if (bekräfta == JOptionPane.YES_OPTION) {
+            String sql = "DELETE FROM partner WHERE pid = '" + pid + "'";
+            idb.delete(sql);
+            JOptionPane.showMessageDialog(null, "Partner har tagits bort!");
+
+            // Rensa fälten
+            pidField.setText("");
+            namnField.setText("");
+            kontaktpersonField.setText("");
+            kontaktepostField.setText("");
+            telefonField.setText("");
+            adressField.setText("");
+            branchField.setText("");
+            stadField.setText("");
+        }
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(null, "Fel vid borttagning av partner: " + e.getMessage());
+    }
+
+    }//GEN-LAST:event_bTaBortPartnerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,6 +333,26 @@ public class AdminPartners extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField adressField;
+    private javax.swing.JButton bAndraUppgifter;
+    private javax.swing.JButton bLaggTillPartner;
+    private javax.swing.JButton bTaBortPartner;
+    private javax.swing.JTextField branchField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelAnvändare;
+    private javax.swing.JTextField kontaktepostField;
+    private javax.swing.JTextField kontaktpersonField;
+    private javax.swing.JTextField namnField;
+    private javax.swing.JTextField pidField;
+    private javax.swing.JTextField stadField;
+    private javax.swing.JTextField telefonField;
     // End of variables declaration//GEN-END:variables
 }
