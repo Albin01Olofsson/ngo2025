@@ -13,6 +13,7 @@ public class AdminLänder extends javax.swing.JFrame {
      private InfDB idb;
      private String inloggadAnvändare;
      private javax.swing.JTextField idField;
+     
     public AdminLänder(InfDB idb,String inloggadAnvändare) {
         this.idb=idb;
         this.inloggadAnvändare=inloggadAnvändare;
