@@ -212,6 +212,20 @@ try {
         String projektchef = projektchefField.getText();
         String land = landField.getText();
 
+        if (!Validering.isNotEmpty(pid) || !Validering.isNotEmpty(projektnamn) || !Validering.isNotEmpty(beskrivning)
+        || !Validering.isNotEmpty(startdatum) || !Validering.isNotEmpty(slutdatum)
+        || !Validering.isNotEmpty(kostnad) || !Validering.isNotEmpty(status)
+        || !Validering.isNotEmpty(prioritet) || !Validering.isNotEmpty(projektchef)
+        || !Validering.isNotEmpty(land)) {
+    JOptionPane.showMessageDialog(this, "Alla fält måste fyllas i.");
+    return;
+}
+
+if (!Validering.isValidDate(startdatum) || !Validering.isValidDate(slutdatum)) {
+    JOptionPane.showMessageDialog(this, "Datum måste vara i formatet yyyy-MM-dd.");
+    return;
+}
+        
         String sql = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) "
                    + "VALUES ('" + pid + "', '" + projektnamn + "', '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', '" + kostnad + "', '" + status + "', '" + prioritet + "', '" + projektchef + "', '" + land + "')";
         
@@ -250,6 +264,20 @@ try {
         String projektchef = projektchefField.getText();
         String land = landField.getText();
 
+        if (!Validering.isNotEmpty(pid) || !Validering.isNotEmpty(projektnamn) || !Validering.isNotEmpty(beskrivning)
+        || !Validering.isNotEmpty(startdatum) || !Validering.isNotEmpty(slutdatum)
+        || !Validering.isNotEmpty(kostnad) || !Validering.isNotEmpty(status)
+        || !Validering.isNotEmpty(prioritet) || !Validering.isNotEmpty(projektchef)
+        || !Validering.isNotEmpty(land)) {
+    JOptionPane.showMessageDialog(this, "Alla fält måste fyllas i.");
+    return;
+}
+
+if (!Validering.isValidDate(startdatum) || !Validering.isValidDate(slutdatum)) {
+    JOptionPane.showMessageDialog(this, "Datum måste vara i formatet yyyy-MM-dd.");
+    return;
+}
+        
         String sql = "UPDATE projekt SET "
                    + "pid = '" + pid + "', "
                    + "projektnamn = '" + projektnamn + "', "

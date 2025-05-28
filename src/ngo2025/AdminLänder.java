@@ -199,7 +199,15 @@ public class AdminLänder extends javax.swing.JFrame {
         String politisk = politiskStrukturField.getText();
         String ekonomi = ekonomiField.getText();
 
-        String sql = "INSERT INTO land (lid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi) "
+        if (!Validering.isNotEmpty(lid) || !Validering.isNotEmpty(namn) || !Validering.isNotEmpty(sprak) ||
+    !Validering.isNotEmpty(valuta) || !Validering.isNotEmpty(tidszon) ||
+    !Validering.isNotEmpty(politisk) || !Validering.isNotEmpty(ekonomi)) {
+    JOptionPane.showMessageDialog(this, "Alla fält måste fyllas i.");
+    return;
+}
+        
+        
+      String sql = "INSERT INTO land (lid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi) "
                    + "VALUES ('" + lid + "', '" + namn + "', '" + sprak + "', '" + valuta + "', '" + tidszon + "', '" + politisk + "', '" + ekonomi + "')";
 
         idb.insert(sql);
@@ -231,7 +239,14 @@ try {
         String politisk = politiskStrukturField.getText();
         String ekonomi = ekonomiField.getText();
 
-        String sql = "UPDATE land SET "
+       if (!Validering.isNotEmpty(lid) || !Validering.isNotEmpty(namn) || !Validering.isNotEmpty(sprak) ||
+    !Validering.isNotEmpty(valuta) || !Validering.isNotEmpty(tidszon) ||
+    !Validering.isNotEmpty(politisk) || !Validering.isNotEmpty(ekonomi)) {
+    JOptionPane.showMessageDialog(this, "Alla fält måste fyllas i.");
+    return;
+}
+        
+                   String sql = "UPDATE land SET "
                    + "lid = '" + lid + "', "
                    + "namn = '" + namn + "', "
                    + "sprak = '" + sprak + "', "
