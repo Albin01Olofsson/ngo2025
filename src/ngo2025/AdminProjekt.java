@@ -6,6 +6,8 @@ package ngo2025;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class AdminProjekt extends javax.swing.JFrame {
@@ -20,6 +22,7 @@ public class AdminProjekt extends javax.swing.JFrame {
         
         initComponents();
         jLabelAnvändare.setText(inloggadAnvändare);
+        fyllComboBoxVäljProjekt();
     }
 
     /**
@@ -109,6 +112,11 @@ public class AdminProjekt extends javax.swing.JFrame {
         jLabel12.setText("Välj Projekt");
 
         jComboBoxVäljProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxVäljProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxVäljProjektActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,7 +221,21 @@ public class AdminProjekt extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+private void fyllComboBoxVäljProjekt() {
+    try {
+        jComboBoxVäljProjekt.removeAllItems();
+        String sql = "SELECT pid FROM projekt";
+        ArrayList<HashMap<String, String>> projektLista = idb.fetchRows(sql);
 
+        if (projektLista != null) {
+            for (HashMap<String, String> projekt : projektLista) {
+                jComboBoxVäljProjekt.addItem(projekt.get("pid"));
+            }
+        }
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av projekt: " + e.getMessage());
+    }
+}
     private void bLaggTillProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLaggTillProjektActionPerformed
         // TODO add your handling code here:
 try {
@@ -352,6 +374,31 @@ try {
     }
 
     }//GEN-LAST:event_bTaBortProjektActionPerformed
+
+    private void jComboBoxVäljProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxVäljProjektActionPerformed
+       String pid = (String) jComboBoxVäljProjekt.getSelectedItem();
+    if (pid == null) return;
+
+    try {
+        String sql = "SELECT * FROM projekt WHERE pid = '" + pid + "'";
+        HashMap<String, String> projekt = idb.fetchRow(sql);
+
+        if (projekt != null) {
+            pidField.setText(projekt.get("pid"));
+            projektnamnField.setText(projekt.get("projektnamn"));
+            beskrivningField.setText(projekt.get("beskrivning"));
+            startdatumField.setText(projekt.get("startdatum"));
+            slutdatumField.setText(projekt.get("slutdatum"));
+            kostnadField.setText(projekt.get("kostnad"));
+            statusField.setText(projekt.get("status"));
+            prioritetField.setText(projekt.get("prioritet"));
+            projektchefField.setText(projekt.get("projektchef"));
+            landField.setText(projekt.get("land"));
+        }
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av projekt: " + e.getMessage());
+    } 
+    }//GEN-LAST:event_jComboBoxVäljProjektActionPerformed
 
     /**
      * @param args the command line arguments

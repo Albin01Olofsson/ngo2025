@@ -6,6 +6,8 @@ package ngo2025;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.HashMap;
 /**
  *
  * @author albin
@@ -21,6 +23,7 @@ public class AdminPartners extends javax.swing.JFrame {
         
         initComponents();
         jLabelAnvändare.setText(inloggadAnvändare);
+        fyllComboBoxVäljPartner();
     }
 
     /**
@@ -100,6 +103,11 @@ public class AdminPartners extends javax.swing.JFrame {
         jLabel9.setText("Stad");
 
         jComboBoxVäljPartner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxVäljPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxVäljPartnerActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Välj Partner");
 
@@ -206,6 +214,24 @@ public class AdminPartners extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+private void fyllComboBoxVäljPartner() {
+    try {
+        jComboBoxVäljPartner.removeAllItems();
+        String sql = "SELECT pid FROM partner";
+        ArrayList<HashMap<String, String>> partners = idb.fetchRows(sql);
+
+        if (partners != null) {
+            for (HashMap<String, String> partner : partners) {
+                jComboBoxVäljPartner.addItem(partner.get("pid")); // 👈 bara pid
+            }
+        }
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av partner: " + e.getMessage());
+    }
+}
+
+
 
     private void bLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLaggTillPartnerActionPerformed
         // TODO add your handling code here:
@@ -339,6 +365,29 @@ try {
     }
 
     }//GEN-LAST:event_bTaBortPartnerActionPerformed
+
+    private void jComboBoxVäljPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxVäljPartnerActionPerformed
+         String pid = (String) jComboBoxVäljPartner.getSelectedItem();
+    if (pid == null) return;
+
+    try {
+        String sql = "SELECT * FROM partner WHERE pid = '" + pid + "'";
+        HashMap<String, String> partner = idb.fetchRow(sql);
+
+        if (partner != null) {
+            pidField.setText(partner.get("pid"));
+            namnField.setText(partner.get("namn"));
+            kontaktpersonField.setText(partner.get("kontaktperson"));
+            kontaktepostField.setText(partner.get("kontaktepost"));
+            telefonField.setText(partner.get("telefon"));
+            adressField.setText(partner.get("adress"));
+            branchField.setText(partner.get("branch"));
+            stadField.setText(partner.get("stad"));
+        }
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av partner: " + e.getMessage());
+    }
+    }//GEN-LAST:event_jComboBoxVäljPartnerActionPerformed
 
     /**
      * @param args the command line arguments
