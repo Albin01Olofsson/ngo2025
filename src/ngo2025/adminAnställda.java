@@ -1,6 +1,7 @@
 package ngo2025;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +15,7 @@ public class adminAnställda extends javax.swing.JFrame {
 
     private InfDB idb;
      private String inloggadAnvändare;
+     private javax.swing.JTextField idField;
      
     public adminAnställda(InfDB idb,String inloggadAnvändare) {
         this.idb=idb;
@@ -33,30 +35,278 @@ public class adminAnställda extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelAnvändare = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        bLaggTillAnstalld = new javax.swing.JButton();
+        bTaBortAnstalld = new javax.swing.JButton();
+        aidField = new javax.swing.JTextField();
+        fornamnField = new javax.swing.JTextField();
+        efternamnField = new javax.swing.JTextField();
+        adressField = new javax.swing.JTextField();
+        epostField = new javax.swing.JTextField();
+        telefonField = new javax.swing.JTextField();
+        anstallningsdatumField = new javax.swing.JTextField();
+        avdelningField = new javax.swing.JTextField();
+        losenordField = new javax.swing.JTextField();
+        bGenereraLosenord = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelAnvändare.setText("jLabel1");
+
+        jLabel1.setText("Anställd meny");
+
+        bLaggTillAnstalld.setText("Lägg till anställd");
+        bLaggTillAnstalld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLaggTillAnstalldActionPerformed(evt);
+            }
+        });
+
+        bTaBortAnstalld.setText("Ta bort anställd");
+        bTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bTaBortAnstalldActionPerformed(evt);
+            }
+        });
+
+        bGenereraLosenord.setText("Generera lösenord");
+        bGenereraLosenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGenereraLosenordActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("AID");
+
+        jLabel3.setText("Förnamn");
+
+        jLabel4.setText("Efternamn");
+
+        jLabel5.setText("Adress");
+
+        jLabel6.setText("Epost");
+
+        jLabel7.setText("Telefon");
+
+        jLabel8.setText("Anställningsdatum");
+
+        jLabel9.setText("Avdelning");
+
+        jLabel10.setText("Lösenord");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(jLabelAnvändare)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabelAnvändare)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3)))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bLaggTillAnstalld)
+                            .addComponent(bTaBortAnstalld)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(9, 9, 9))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(epostField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addComponent(bGenereraLosenord))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(losenordField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(efternamnField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(avdelningField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(fornamnField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(anstallningsdatumField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(aidField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(telefonField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabelAnvändare)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(bLaggTillAnstalld))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelAnvändare)
+                    .addComponent(bTaBortAnstalld))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(aidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefonField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fornamnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anstallningsdatumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(efternamnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avdelningField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(losenordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(epostField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bGenereraLosenord)
+                    .addComponent(jLabel6))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLaggTillAnstalldActionPerformed
+        // TODO add your handling code here:
+try {
+        String aid = aidField.getText();
+        String fornamn = fornamnField.getText();
+        String efternamn = efternamnField.getText();
+        String adress = adressField.getText();
+        String epost = epostField.getText();
+        String telefon = telefonField.getText();
+        String anstallningsdatum = anstallningsdatumField.getText();
+        String losenord = losenordField.getText();
+        String avdelning = avdelningField.getText();
+        
+
+        String sql = "INSERT INTO anstalld (aid, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning) "
+                   + "VALUES ('" + aid + "', '" + fornamn + "', '" + efternamn + "', '" + adress + "', '" + epost + "', '" + telefon + "', '" + anstallningsdatum + "', '" + losenord + "', '" + avdelning + "')";
+        
+        idb.insert(sql);
+        JOptionPane.showMessageDialog(null, "Anställd tillagd!");
+        
+        // Rensa fälten
+        aidField.setText("");
+        fornamnField.setText("");
+        efternamnField.setText("");
+        adressField.setText("");
+        epostField.setText("");
+        telefonField.setText("");
+        anstallningsdatumField.setText("");
+        losenordField.setText("");
+        avdelningField.setText("");
+        
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(null, "Fel vid tillägg av anställd: " + e.getMessage());
+    }
+        
+    }//GEN-LAST:event_bLaggTillAnstalldActionPerformed
+
+    private void bTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTaBortAnstalldActionPerformed
+        // TODO add your handling code here:
+try {
+        String aid = aidField.getText();
+
+        // Kontrollera att fältet inte är tomt
+        if (aid.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange ett AID för att ta bort anställd.");
+            return;
+        }
+
+        // Bekräftelse innan borttagning
+        int bekräfta = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort anställd med AID: " + aid + "?", "Bekräfta borttagning", JOptionPane.YES_NO_OPTION);
+        if (bekräfta == JOptionPane.YES_OPTION) {
+            String sql = "DELETE FROM anstalld WHERE aid = '" + aid + "'";
+            idb.delete(sql);
+            JOptionPane.showMessageDialog(null, "Anställd har tagits bort!");
+
+            // Rensa fälten
+        aidField.setText("");
+        fornamnField.setText("");
+        efternamnField.setText("");
+        adressField.setText("");
+        epostField.setText("");
+        telefonField.setText("");
+        anstallningsdatumField.setText("");
+        losenordField.setText("");
+        avdelningField.setText("");
+        }
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(null, "Fel vid borttagning av anställd: " + e.getMessage());
+    }
+
+    }//GEN-LAST:event_bTaBortAnstalldActionPerformed
+
+    private void bGenereraLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenereraLosenordActionPerformed
+        // TODO add your handling code here:
+        String tecken = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    StringBuilder losenord = new StringBuilder();
+    int langd = 10; // Exempel: 10 tecken långt lösenord
+
+    java.util.Random random = new java.util.Random();
+
+    for (int i = 0; i < langd; i++) {
+        int index = random.nextInt(tecken.length());
+        losenord.append(tecken.charAt(index));
+    }
+
+    // Sätt det genererade lösenordet i fältet
+    losenordField.setText(losenord.toString());
+    
+    }//GEN-LAST:event_bGenereraLosenordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,6 +344,28 @@ public class adminAnställda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField adressField;
+    private javax.swing.JTextField aidField;
+    private javax.swing.JTextField anstallningsdatumField;
+    private javax.swing.JTextField avdelningField;
+    private javax.swing.JButton bGenereraLosenord;
+    private javax.swing.JButton bLaggTillAnstalld;
+    private javax.swing.JButton bTaBortAnstalld;
+    private javax.swing.JTextField efternamnField;
+    private javax.swing.JTextField epostField;
+    private javax.swing.JTextField fornamnField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelAnvändare;
+    private javax.swing.JTextField losenordField;
+    private javax.swing.JTextField telefonField;
     // End of variables declaration//GEN-END:variables
 }
