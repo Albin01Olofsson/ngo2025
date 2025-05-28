@@ -53,6 +53,8 @@ public class AdminPartners extends javax.swing.JFrame {
         branchField = new javax.swing.JTextField();
         stadField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jComboBoxVäljPartner = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +99,10 @@ public class AdminPartners extends javax.swing.JFrame {
 
         jLabel9.setText("Stad");
 
+        jComboBoxVäljPartner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel10.setText("Välj Partner");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,7 +121,11 @@ public class AdminPartners extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(bTaBortPartner)
-                                    .addComponent(bAndraUppgifter)))))
+                                    .addComponent(bAndraUppgifter))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxVäljPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,11 +168,13 @@ public class AdminPartners extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(bLaggTillPartner))
+                    .addComponent(bLaggTillPartner)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelAnvändare)
-                    .addComponent(bAndraUppgifter))
+                    .addComponent(bAndraUppgifter)
+                    .addComponent(jComboBoxVäljPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bTaBortPartner)
                 .addGap(27, 27, 27)
@@ -369,7 +381,9 @@ try {
     private javax.swing.JButton bLaggTillPartner;
     private javax.swing.JButton bTaBortPartner;
     private javax.swing.JTextField branchField;
+    private javax.swing.JComboBox<String> jComboBoxVäljPartner;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
