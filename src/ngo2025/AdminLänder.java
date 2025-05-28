@@ -6,6 +6,8 @@ package ngo2025;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class AdminLänder extends javax.swing.JFrame {
@@ -18,7 +20,8 @@ public class AdminLänder extends javax.swing.JFrame {
         this.idb=idb;
         this.inloggadAnvändare=inloggadAnvändare;
         initComponents();
-        jLabelAnvändare.setText(inloggadAnvändare);   
+        jLabelAnvändare.setText(inloggadAnvändare);
+        fyllComboBoxVäljLand();
     }
 
     /**
@@ -48,7 +51,7 @@ public class AdminLänder extends javax.swing.JFrame {
         valutaField = new javax.swing.JTextField();
         lidField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxVäljLand = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,7 +94,12 @@ public class AdminLänder extends javax.swing.JFrame {
 
         jLabel8.setText("LID");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxVäljLand.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxVäljLand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxVäljLandActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Välj Land");
 
@@ -149,7 +157,7 @@ public class AdminLänder extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBoxVäljLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -197,13 +205,27 @@ public class AdminLänder extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addGap(22, 22, 22)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxVäljLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void fyllComboBoxVäljLand() {
+    try {
+        jComboBoxVäljLand.removeAllItems();
+        String sql = "SELECT lid FROM land";
+        ArrayList<HashMap<String, String>> landLista = idb.fetchRows(sql);
 
+        if (landLista != null) {
+            for (HashMap<String, String> land : landLista) {
+                jComboBoxVäljLand.addItem(land.get("lid")); // bara lid
+            }
+        }
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av land: " + e.getMessage());
+    }
+}
     private void bLaggTillLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLaggTillLandActionPerformed
         // TODO add your handling code here:
      try {
@@ -285,6 +307,28 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_lidFieldActionPerformed
 
+    private void jComboBoxVäljLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxVäljLandActionPerformed
+       String lid = (String) jComboBoxVäljLand.getSelectedItem();
+    if (lid == null) return;
+
+    try {
+        String sql = "SELECT * FROM land WHERE lid = '" + lid + "'";
+        HashMap<String, String> land = idb.fetchRow(sql);
+
+        if (land != null) {
+            lidField.setText(land.get("lid"));
+            namnField.setText(land.get("namn"));
+            sprakField.setText(land.get("sprak"));
+            valutaField.setText(land.get("valuta"));
+            tidszonField.setText(land.get("tidszon"));
+            politiskStrukturField.setText(land.get("politisk_struktur"));
+            ekonomiField.setText(land.get("ekonomi"));
+        }
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av land: " + e.getMessage());
+    }
+    }//GEN-LAST:event_jComboBoxVäljLandActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -324,7 +368,7 @@ try {
     private javax.swing.JButton bAndraUppgifter;
     private javax.swing.JButton bLaggTillLand;
     private javax.swing.JTextField ekonomiField;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxVäljLand;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
