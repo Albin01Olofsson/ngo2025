@@ -5,6 +5,9 @@
 package ngo2025;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.HashMap;
 /**
  *
  * @author albin
@@ -12,12 +15,14 @@ import oru.inf.InfException;
 public class AdminAvdelningar extends javax.swing.JFrame {
     private InfDB idb;
      private String inloggadAnvändare;
+     private javax.swing.JTextField idField;
     
     public AdminAvdelningar(InfDB idb,String inloggadAnvändare) {
         this.idb=idb;
         this.inloggadAnvändare=inloggadAnvändare;
         initComponents();
         jLabelAnvändare.setText(inloggadAnvändare);
+        fyllComboBoxValjAvdelning();
     }
 
     /**
@@ -30,30 +35,288 @@ public class AdminAvdelningar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelAnvändare = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        bLaggTillAvdelning = new javax.swing.JButton();
+        bAndraUppgifter = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        avdidField = new javax.swing.JTextField();
+        namnField = new javax.swing.JTextField();
+        beskrivningField = new javax.swing.JTextField();
+        adressField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        epostField = new javax.swing.JTextField();
+        telefonField = new javax.swing.JTextField();
+        stadField = new javax.swing.JTextField();
+        chefField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBoxValjAvdelning = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelAnvändare.setText("jLabel1");
+
+        jLabel1.setText("Avdelning meny");
+
+        bLaggTillAvdelning.setText("Lägg till avdelning");
+        bLaggTillAvdelning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLaggTillAvdelningActionPerformed(evt);
+            }
+        });
+
+        bAndraUppgifter.setText("Ändra uppgifter");
+        bAndraUppgifter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAndraUppgifterActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("AVDID");
+
+        jLabel3.setText("Namn");
+
+        jLabel4.setText("Beskrivning");
+
+        jLabel5.setText("Adress");
+
+        jLabel6.setText("Epost");
+
+        jLabel7.setText("Telefon");
+
+        jLabel8.setText("Stad");
+
+        jLabel9.setText("Chef");
+
+        jComboBoxValjAvdelning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxValjAvdelning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxValjAvdelningActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Välj avdelning");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jLabelAnvändare)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bAndraUppgifter)
+                            .addComponent(bLaggTillAvdelning)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelAnvändare)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(avdidField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(namnField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(beskrivningField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chefField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stadField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telefonField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(epostField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBoxValjAvdelning, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabelAnvändare)
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(bLaggTillAvdelning)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAnvändare)
+                    .addComponent(bAndraUppgifter)
+                    .addComponent(jComboBoxValjAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(avdidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(epostField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(namnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(telefonField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(beskrivningField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(stadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(chefField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+private void fyllComboBoxValjAvdelning() {
+    try {
+        jComboBoxValjAvdelning.removeAllItems();
+        String sql = "SELECT avdid FROM avdelning";
+        ArrayList<HashMap<String, String>> projektLista = idb.fetchRows(sql);
+
+        if (projektLista != null) {
+            for (HashMap<String, String> projekt : projektLista) {
+                jComboBoxValjAvdelning.addItem(projekt.get("avdid"));
+            }
+        }
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av avdelning: " + e.getMessage());
+    }
+}
+    private void bLaggTillAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLaggTillAvdelningActionPerformed
+        // TODO add your handling code here:
+try {
+        String avdid = avdidField.getText();
+        String namn = namnField.getText();
+        String beskrivning = beskrivningField.getText();
+        String adress = adressField.getText();
+        String epost = epostField.getText();
+        String telefon = telefonField.getText();
+        String stad = stadField.getText();
+        String chef = chefField.getText();
+        
+
+        String sql = "INSERT INTO avdelning(avdid, namn, beskrivning, adress, epost, telefon, stad, chef) "
+                   + "VALUES ('" + avdid + "', '" + namn + "', '" + beskrivning + "', '" + adress + "', '" + epost + "', '" + telefon + "', '" + stad + "', '" + chef + "')";
+        
+        idb.insert(sql);
+        JOptionPane.showMessageDialog(null, "Avdelning tillagd!");
+        
+        // Rensa fälten
+        avdidField.setText("");
+        namnField.setText("");
+        beskrivningField.setText("");
+        adressField.setText("");
+        epostField.setText("");
+        telefonField.setText("");
+        stadField.setText("");
+        chefField.setText("");
+        
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(null, "Fel vid tillägg av avdelning: " + e.getMessage());
+    }
+
+    }//GEN-LAST:event_bLaggTillAvdelningActionPerformed
+
+    private void bAndraUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAndraUppgifterActionPerformed
+        // TODO add your handling code here:
+try {
+        String avdid = avdidField.getText();
+        String namn = namnField.getText();
+        String beskrivning = beskrivningField.getText();
+        String adress = adressField.getText();
+        String epost = epostField.getText();
+        String telefon = telefonField.getText();
+        String stad = stadField.getText();
+        String chef = chefField.getText();
+
+       if (!Validering.isNotEmpty(avdid) || !Validering.isNotEmpty(namn) || !Validering.isNotEmpty(beskrivning) ||
+    !Validering.isNotEmpty(adress) || !Validering.isNotEmpty(epost) ||
+    !Validering.isNotEmpty(telefon) || !Validering.isNotEmpty(stad) || !Validering.isNotEmpty(chef)) {
+    JOptionPane.showMessageDialog(this, "Alla fält måste fyllas i.");
+    return;
+}
+       
+       if (!Validering.isValidEmail(epost)) {
+    JOptionPane.showMessageDialog(this, "Ogiltig e-postadress.");
+    return;
+}
+    if (!Validering.isValidPhone(telefon)) {
+    JOptionPane.showMessageDialog(this, "Ogiltigt telefonnummer.");
+    return;
+}
+        
+                   String sql = "UPDATE avdelning SET "
+                   + "avdid = '" + avdid + "', "
+                   + "namn = '" + namn + "', "
+                   + "beskrivning = '" + beskrivning + "', "
+                   + "adress = '" + adress + "', "
+                   + "epost = '" + epost + "', "
+                   + "telefon = '" + telefon + "', "
+                   + "stad = '" + stad + "', "
+                   + "chef = '" + chef + "' "
+                   + "WHERE avdid = " + avdid;
+
+        idb.update(sql);
+        JOptionPane.showMessageDialog(null, "Uppgifter uppdaterade!");
+
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(null, "Fel vid uppdatering: " + e.getMessage());
+    }
+
+    }//GEN-LAST:event_bAndraUppgifterActionPerformed
+
+    private void jComboBoxValjAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxValjAvdelningActionPerformed
+        // TODO add your handling code here:
+         String avdid = (String) jComboBoxValjAvdelning.getSelectedItem();
+    if (avdid == null) return;
+
+    try {
+        String sql = "SELECT * FROM avdelning WHERE avdid = '" + avdid + "'";
+        HashMap<String, String> avdelning = idb.fetchRow(sql);
+
+        if (avdelning != null) {
+            avdidField.setText(avdelning.get("avdid"));
+            namnField.setText(avdelning.get("namn"));
+            beskrivningField.setText(avdelning.get("beskrivning"));
+            adressField.setText(avdelning.get("adress"));
+            epostField.setText(avdelning.get("epost"));
+            telefonField.setText(avdelning.get("telefon"));
+            stadField.setText(avdelning.get("stad"));
+            chefField.setText(avdelning.get("chef"));
+            
+        }
+    } catch (InfException e) {
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av avdelning: " + e.getMessage());
+    } 
+    }//GEN-LAST:event_jComboBoxValjAvdelningActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,6 +354,27 @@ public class AdminAvdelningar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField adressField;
+    private javax.swing.JTextField avdidField;
+    private javax.swing.JButton bAndraUppgifter;
+    private javax.swing.JButton bLaggTillAvdelning;
+    private javax.swing.JTextField beskrivningField;
+    private javax.swing.JTextField chefField;
+    private javax.swing.JTextField epostField;
+    private javax.swing.JComboBox<String> jComboBoxValjAvdelning;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelAnvändare;
+    private javax.swing.JTextField namnField;
+    private javax.swing.JTextField stadField;
+    private javax.swing.JTextField telefonField;
     // End of variables declaration//GEN-END:variables
 }
