@@ -3,41 +3,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2025;
+
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+
 /**
  *
  * @author albin
  */
 public class Meny extends javax.swing.JFrame {
-     private InfDB idb;
-     private String inloggadAnvändare;
+
+    private InfDB idb;
+    private String inloggadAnvändare;
+
     /**
      * Creates new form Meny
      */
-    public Meny(InfDB idb,String inloggadAnvändare ) {
-        this.idb=idb;
-        this.inloggadAnvändare=inloggadAnvändare;
-        
-       initComponents();
-      kontrolleraProjektchefSynlighet();
-       jPanelStart.setVisible(true);
-       jPanelMinaUppgifter.setVisible(false);
-       jPanelProjekt.setVisible(false);
-       jPanelHållbarhetsmål.setVisible(false);
-       jPanelPersonal.setVisible(false);
-       labelinloggadAnvändare.setText(inloggadAnvändare);
-       
-       comboProjekt.addItem("Alla");
-       comboProjekt.addItem("Planerat");
-       comboProjekt.addItem("Pågående");
-       comboProjekt.addItem("Avslutat");
-       comboProjekt.addItem("tilldelad");
-       
+    public Meny(InfDB idb, String inloggadAnvändare) {
+        this.idb = idb;
+        this.inloggadAnvändare = inloggadAnvändare;
+
+        initComponents();
+        kontrolleraProjektchefSynlighet();
+        jPanelStart.setVisible(true);
+        jPanelMinaUppgifter.setVisible(false);
+        jPanelProjekt.setVisible(false);
+        jPanelHållbarhetsmål.setVisible(false);
+        jPanelPersonal.setVisible(false);
+        labelinloggadAnvändare.setText(inloggadAnvändare);
+
+        comboProjekt.addItem("Alla");
+        comboProjekt.addItem("Planerat");
+        comboProjekt.addItem("Pågående");
+        comboProjekt.addItem("Avslutat");
+        comboProjekt.addItem("tilldelad");
+
     }
 
     /**
@@ -471,301 +475,294 @@ public class Meny extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kontrolleraProjektchefSynlighet(){
-       try{
-        String sql = "SELECT pid FROM projekt WHERE projektchef = " +
-               "(SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "')";
-       
-       ArrayList<String> resultat = idb.fetchColumn(sql);
-       
-       
-           bProjektChef.setVisible(resultat != null && !resultat.isEmpty());
-       
-       
-       }catch (InfException ex){
-           bProjektChef.setVisible(false);
-       }
+    private void kontrolleraProjektchefSynlighet() {
+        try {
+            String sql = "SELECT pid FROM projekt WHERE projektchef = "
+                    + "(SELECT aid FROM anstalld WHERE epost = '" + inloggadAnvändare + "')";
+
+            ArrayList<String> resultat = idb.fetchColumn(sql);
+
+            bProjektChef.setVisible(resultat != null && !resultat.isEmpty());
+
+        } catch (InfException ex) {
+            bProjektChef.setVisible(false);
+        }
     }
 
-    
+
     private void bMinauppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMinauppgifterActionPerformed
         jPanelStart.setVisible(true);
         jPanelMinaUppgifter.setVisible(true);
-    jPanelProjekt.setVisible(false);
-    jPanelHållbarhetsmål.setVisible(false);
-    jPanelPersonal.setVisible(false);
-    
-    try{
-        String sql = "SELECT fornamn, efternamn, adress, telefon, epost, anstallningsdatum FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
-        HashMap<String, String> uppgifter = idb.fetchRow(sql);
-        
-        if(uppgifter !=null){
-            txtFornamn.setText(uppgifter.get("fornamn"));
-            txtEfternamn.setText(uppgifter.get("efternamn"));
-            txtAdress.setText(uppgifter.get("adress"));
-            txtTelefon.setText(uppgifter.get("telefon"));
-            txtEpost.setText(uppgifter.get("epost"));
-            txtAnstDatum.setText(uppgifter.get("anstallningsdatum"));
+        jPanelProjekt.setVisible(false);
+        jPanelHållbarhetsmål.setVisible(false);
+        jPanelPersonal.setVisible(false);
+
+        try {
+            String sql = "SELECT fornamn, efternamn, adress, telefon, epost, anstallningsdatum FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
+            HashMap<String, String> uppgifter = idb.fetchRow(sql);
+
+            if (uppgifter != null) {
+                txtFornamn.setText(uppgifter.get("fornamn"));
+                txtEfternamn.setText(uppgifter.get("efternamn"));
+                txtAdress.setText(uppgifter.get("adress"));
+                txtTelefon.setText(uppgifter.get("telefon"));
+                txtEpost.setText(uppgifter.get("epost"));
+                txtAnstDatum.setText(uppgifter.get("anstallningsdatum"));
+            }
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(this, "Kunde inte hämta uppgifter" + ex.getMessage());
         }
-    }catch(InfException ex){
-        JOptionPane.showMessageDialog(this,"Kunde inte hämta uppgifter" + ex.getMessage());
-    }
     }//GEN-LAST:event_bMinauppgifterActionPerformed
 
     private void bProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProjektActionPerformed
         jPanelStart.setVisible(true);
         jPanelMinaUppgifter.setVisible(false);
-    jPanelProjekt.setVisible(true);
-    jPanelHållbarhetsmål.setVisible(false);
-    jPanelPersonal.setVisible(false);
+        jPanelProjekt.setVisible(true);
+        jPanelHållbarhetsmål.setVisible(false);
+        jPanelPersonal.setVisible(false);
     }//GEN-LAST:event_bProjektActionPerformed
 
     private void bHållbarhetsmålActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHållbarhetsmålActionPerformed
         jPanelStart.setVisible(true);
         jPanelMinaUppgifter.setVisible(false);
-    jPanelProjekt.setVisible(false);
-    jPanelHållbarhetsmål.setVisible(true);
-    jPanelPersonal.setVisible(false);
-    
-    try{
-        String sql = "SELECT namn, beskrivning, malnummer FROM hallbarhetsmal ORDER BY hid";
-        ArrayList<HashMap<String,String>> malLista = idb.fetchRows(sql);
-        //skapa ny modell till jList
-         StringBuilder text = new StringBuilder();
-        
-        if(malLista != null && !malLista.isEmpty()) {
-            for(HashMap<String,String> mal: malLista){
-                String rad = mal.get("malnummer") + " Mål: " + mal.get("namn") + "\n" +
-             "Beskrivning: " + mal.get("beskrivning") + "\n\n";
-                text.append(rad);
+        jPanelProjekt.setVisible(false);
+        jPanelHållbarhetsmål.setVisible(true);
+        jPanelPersonal.setVisible(false);
+
+        try {
+            String sql = "SELECT namn, beskrivning, malnummer FROM hallbarhetsmal ORDER BY hid";
+            ArrayList<HashMap<String, String>> malLista = idb.fetchRows(sql);
+            //skapa ny modell till jList
+            StringBuilder text = new StringBuilder();
+
+            if (malLista != null && !malLista.isEmpty()) {
+                for (HashMap<String, String> mal : malLista) {
+                    String rad = mal.get("malnummer") + " Mål: " + mal.get("namn") + "\n"
+                            + "Beskrivning: " + mal.get("beskrivning") + "\n\n";
+                    text.append(rad);
+                }
+            } else {
+                text.append("Inga hållbarhetsmål hittades.");
             }
-        }else{
-            text.append("Inga hållbarhetsmål hittades.");
+            jTextAreaHållbarhetsmål.setText(text.toString());
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(this, "Fel vid hämtning av hållbarhetsmål: " + ex.getMessage());
         }
-       jTextAreaHållbarhetsmål.setText(text.toString());
-        
-    }catch(InfException ex){
-         JOptionPane.showMessageDialog(this, "Fel vid hämtning av hållbarhetsmål: " + ex.getMessage());
-    }
     }//GEN-LAST:event_bHållbarhetsmålActionPerformed
 
     private void bPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPersonalActionPerformed
         jPanelStart.setVisible(true);
         jPanelMinaUppgifter.setVisible(false);
-    jPanelProjekt.setVisible(false);
-    jPanelHållbarhetsmål.setVisible(false);
-    jPanelPersonal.setVisible(true);
-    
-    try{
-        String sql = "SELECT fornamn, efternamn, epost FROM anstalld WHERE avdelning = (SELECT avdelning from anstalld WHERE epost =  '" + inloggadAnvändare + "')";
-        ArrayList<HashMap<String,String>> personalLista = idb.fetchRows(sql);
-        DefaultListModel<String> modell = new DefaultListModel<>();
-        if(personalLista != null && !personalLista.isEmpty()) {
-            for(HashMap<String,String> personal: personalLista){
-                String rad =personal.get("fornamn")+" "+personal.get("efternamn")+" "+"Epost: "+personal.get("epost");
-                modell.addElement(rad);
+        jPanelProjekt.setVisible(false);
+        jPanelHållbarhetsmål.setVisible(false);
+        jPanelPersonal.setVisible(true);
+
+        try {
+            String sql = "SELECT fornamn, efternamn, epost FROM anstalld WHERE avdelning = (SELECT avdelning from anstalld WHERE epost =  '" + inloggadAnvändare + "')";
+            ArrayList<HashMap<String, String>> personalLista = idb.fetchRows(sql);
+            DefaultListModel<String> modell = new DefaultListModel<>();
+            if (personalLista != null && !personalLista.isEmpty()) {
+                for (HashMap<String, String> personal : personalLista) {
+                    String rad = personal.get("fornamn") + " " + personal.get("efternamn") + " " + "Epost: " + personal.get("epost");
+                    modell.addElement(rad);
+                }
+            } else {
+                modell.addElement("Ingen personal hittades.");
             }
-        }else{
-            modell.addElement("Ingen personal hittades.");
+            jListPersonal.setModel(modell);
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(this, "fel vid hämtning av Personal; " + ex.getMessage());
         }
-        jListPersonal.setModel(modell);
-    } catch (InfException ex){
-        JOptionPane.showMessageDialog(this, "fel vid hämtning av Personal; " + ex.getMessage());
-    }
     }//GEN-LAST:event_bPersonalActionPerformed
 
     private void btnSparaPersonUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaPersonUppgifterActionPerformed
-        try{
+        try {
             String fornamn = txtFornamn.getText();
             String efternamn = txtEfternamn.getText();
             String adress = txtAdress.getText();
             String telefon = txtTelefon.getText();
-            
-            if (!Validering.isNotEmpty(fornamn) || !Validering.isNotEmpty(efternamn) || !Validering.isNotEmpty(adress)) {
-            JOptionPane.showMessageDialog(this, "Fält får inte vara tomma!");
-            return;
-        }
 
-        if (!Validering.isValidPhone(telefon)) {
-            JOptionPane.showMessageDialog(this, "Ogiltigt telefonnummer. Endast siffror, bindestreck eller mellanslag tillåts.");
-            return;
-        }
-            
-            String sql ="UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + efternamn +
-                     "', adress = '" + adress + "', telefon = '" + telefon +
-                     "' WHERE epost = '" + inloggadAnvändare + "'";
+            if (!Validering.isNotEmpty(fornamn) || !Validering.isNotEmpty(efternamn) || !Validering.isNotEmpty(adress)) {
+                JOptionPane.showMessageDialog(this, "Fält får inte vara tomma!");
+                return;
+            }
+
+            if (!Validering.isValidPhone(telefon)) {
+                JOptionPane.showMessageDialog(this, "Ogiltigt telefonnummer. Endast siffror, bindestreck eller mellanslag tillåts.");
+                return;
+            }
+
+            String sql = "UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + efternamn
+                    + "', adress = '" + adress + "', telefon = '" + telefon
+                    + "' WHERE epost = '" + inloggadAnvändare + "'";
             idb.update(sql);
             JOptionPane.showMessageDialog(this, "Uppgifterna har sparats!");
-        }catch (InfException e){
-          JOptionPane.showMessageDialog(this, "Fel vid uppdatering: " + e.getMessage());  
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(this, "Fel vid uppdatering: " + e.getMessage());
         }
     }//GEN-LAST:event_btnSparaPersonUppgifterActionPerformed
 
     private void comboProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProjektActionPerformed
-              txtaProjekt.setText("");
-              String valtAlternativ = (String)comboProjekt.getSelectedItem();
-              
-              try{
-                 String sql = "SELECT aid, avdelning FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
-                 HashMap<String, String> användareInfo = idb.fetchRow(sql);
-                 
-                 String aid = användareInfo.get("aid");
-                 String avdelning = användareInfo.get("avdelning");
-                 String sqlProj = "";
-                 
-                 if(valtAlternativ.equals("tilldelad")){
-                    
-                     sqlProj = "SELECT projekt.* FROM projekt "
-                         + "JOIN ans_proj ON projekt.pid = ans_proj.pid "
-                         + "WHERE ans_proj.aid = " + aid; 
-                 }else if (!valtAlternativ.equals("Alla")){
-                     
-                     sqlProj = "SELECT projekt.* FROM projekt "
-                         + "JOIN handlaggare ON projekt.projektchef = handlaggare.aid "
-                         + "JOIN anstalld ON handlaggare.aid = anstalld.aid "
-                         + "WHERE anstalld.avdelning = " + avdelning
-                         + " AND projekt.status = '" + valtAlternativ + "'";
-                 }else {
-                     sqlProj = "SELECT projekt.* FROM projekt "
-                         + "JOIN handlaggare ON projekt.projektchef = handlaggare.aid "
-                         + "JOIN anstalld ON handlaggare.aid = anstalld.aid "
-                         + "WHERE anstalld.avdelning = " + avdelning;
-                 }
-                 
-                 ArrayList<HashMap<String,String>> resultat = idb.fetchRows(sqlProj);
-                 if (resultat != null && !resultat.isEmpty()) {
-            for (HashMap<String, String> rad : resultat) {
-                txtaProjekt.append("Projektnamn: " + rad.get("projektnamn") + "\n" +
-                    "Beskrivning: " + rad.get("beskrivning") + "\n" +
-                    "Startdatum: " + rad.get("startdatum") + "\n" +
-                    "Slutdatum: " + rad.get("slutdatum") + "\n" +
-                    "Kostnad: " + rad.get("kostnad") + " kr\n" +
-                    "Status: " + rad.get("status") + "\n" +
-                    "Prioritet: " + rad.get("prioritet") + "\n" +
-                    "Projektchef ID: " + rad.get("projektchef") + "\n" +
-                    "Land ID: " + rad.get("land") + "\n");
+        txtaProjekt.setText("");
+        String valtAlternativ = (String) comboProjekt.getSelectedItem();
+
+        try {
+            String sql = "SELECT aid, avdelning FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
+            HashMap<String, String> användareInfo = idb.fetchRow(sql);
+
+            String aid = användareInfo.get("aid");
+            String avdelning = användareInfo.get("avdelning");
+            String sqlProj = "";
+
+            if (valtAlternativ.equals("tilldelad")) {
+
+                sqlProj = "SELECT projekt.* FROM projekt "
+                        + "JOIN ans_proj ON projekt.pid = ans_proj.pid "
+                        + "WHERE ans_proj.aid = " + aid;
+            } else if (!valtAlternativ.equals("Alla")) {
+
+                sqlProj = "SELECT projekt.* FROM projekt "
+                        + "JOIN handlaggare ON projekt.projektchef = handlaggare.aid "
+                        + "JOIN anstalld ON handlaggare.aid = anstalld.aid "
+                        + "WHERE anstalld.avdelning = " + avdelning
+                        + " AND projekt.status = '" + valtAlternativ + "'";
+            } else {
+                sqlProj = "SELECT projekt.* FROM projekt "
+                        + "JOIN handlaggare ON projekt.projektchef = handlaggare.aid "
+                        + "JOIN anstalld ON handlaggare.aid = anstalld.aid "
+                        + "WHERE anstalld.avdelning = " + avdelning;
             }
-        } else {
-            txtaProjekt.setText("Inga projekt hittades.");
+
+            ArrayList<HashMap<String, String>> resultat = idb.fetchRows(sqlProj);
+            if (resultat != null && !resultat.isEmpty()) {
+                for (HashMap<String, String> rad : resultat) {
+                    txtaProjekt.append("Projektnamn: " + rad.get("projektnamn") + "\n"
+                            + "Beskrivning: " + rad.get("beskrivning") + "\n"
+                            + "Startdatum: " + rad.get("startdatum") + "\n"
+                            + "Slutdatum: " + rad.get("slutdatum") + "\n"
+                            + "Kostnad: " + rad.get("kostnad") + " kr\n"
+                            + "Status: " + rad.get("status") + "\n"
+                            + "Prioritet: " + rad.get("prioritet") + "\n"
+                            + "Projektchef ID: " + rad.get("projektchef") + "\n"
+                            + "Land ID: " + rad.get("land") + "\n");
+                }
+            } else {
+                txtaProjekt.setText("Inga projekt hittades.");
+            }
+
+        } catch (InfException e) {
+            txtaProjekt.setText("Fel: " + e.getMessage());
         }
 
-    } catch (InfException e) {
-        txtaProjekt.setText("Fel: " + e.getMessage());
-    }
-              
-              
-             
-              
-              
+
     }//GEN-LAST:event_comboProjektActionPerformed
 
     private void jListPersonalValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPersonalValueChanged
-      if (!evt.getValueIsAdjusting()) {
-        String valdRad = jListPersonal.getSelectedValue();
+        if (!evt.getValueIsAdjusting()) {
+            String valdRad = jListPersonal.getSelectedValue();
 
-        if (valdRad != null && valdRad.contains("Epost: ")) {
-            // Hämta e-postadressen genom att ta allt efter "Epost: "
-            String epost = valdRad.substring(valdRad.indexOf("Epost: ") + 7).trim();
+            if (valdRad != null && valdRad.contains("Epost: ")) {
+                // Hämta e-postadressen genom att ta allt efter "Epost: "
+                String epost = valdRad.substring(valdRad.indexOf("Epost: ") + 7).trim();
 
-            try {
-                // Skapa SQL-fråga för att hämta all info om personen
-                String sql = "SELECT * FROM anstalld WHERE epost = '" + epost + "'";
-                HashMap<String, String> anstalld = idb.fetchRow(sql);
+                try {
+                    // Skapa SQL-fråga för att hämta all info om personen
+                    String sql = "SELECT * FROM anstalld WHERE epost = '" + epost + "'";
+                    HashMap<String, String> anstalld = idb.fetchRow(sql);
 
-                if (anstalld != null) {
-                    String info = "Namn: " + anstalld.get("fornamn") + " " + anstalld.get("efternamn") + "\n" +
-                                  "E-post: " + anstalld.get("epost") + "\n" +
-                                  "Telefon: " + anstalld.get("telefon") + "\n" +
-                                  "Adress: " + anstalld.get("adress") + "\n" +
-                                  "Roll: " + anstalld.get("roll") + "\n" +
-                                  "Avdelning: " + anstalld.get("avdelning");
+                    if (anstalld != null) {
+                        String info = "Namn: " + anstalld.get("fornamn") + " " + anstalld.get("efternamn") + "\n"
+                                + "E-post: " + anstalld.get("epost") + "\n"
+                                + "Telefon: " + anstalld.get("telefon") + "\n"
+                                + "Adress: " + anstalld.get("adress") + "\n"
+                                + "Avdelning: " + anstalld.get("avdelning");
 
-                    JOptionPane.showMessageDialog(this, info, "Anställd info", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Ingen information hittades för vald anställd.", "Ingen träff", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(this, info, "Anställd info", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ingen information hittades för vald anställd.", "Ingen träff", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                } catch (InfException ex) {
+                    JOptionPane.showMessageDialog(this, "Fel vid databassökning: " + ex.getMessage(), "Databasfel", JOptionPane.ERROR_MESSAGE);
                 }
-
-            } catch (InfException ex) {
-                JOptionPane.showMessageDialog(this, "Fel vid databassökning: " + ex.getMessage(), "Databasfel", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }
     }//GEN-LAST:event_jListPersonalValueChanged
 
     private void jButtonSökprojektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSökprojektActionPerformed
-      try{
-          String frånDatum= jTextFieldFråndatum.getText().trim();
-          String tillDatum = jTextFieldTilldatum.getText().trim();
-          
-          if (!Validering.isValidDate(frånDatum) || !Validering.isValidDate(tillDatum)) {
-    JOptionPane.showMessageDialog(this, "Datum måste vara i formatet yyyy-MM-dd.");
-    return;
-}
-          String sqlAVD = "SELECT avdelning FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
-          String avdelning = idb.fetchSingle(sqlAVD);
-          
-           String sql = "SELECT DISTINCT projekt.* FROM projekt " +
-                   "JOIN ans_proj on projekt.pid = ans_proj.pid " +
-                   "JOIN anstalld on ans_proj.aid = anstalld.aid " +
-                   "WHERE anstalld.avdelning = '" + avdelning + "' " +
-                   "AND projekt.status = 'Pågående' " +
-                   "AND (projekt.startdatum <= '" + tillDatum + "' " +
-                   "AND projekt.slutdatum >= '" + frånDatum + "' )";
-                   
-                     
-                     
-        ArrayList<HashMap<String, String>> projektLista = idb.fetchRows(sql);
-        StringBuilder resultat = new StringBuilder();
-        
-        if(projektLista != null && !projektLista.isEmpty()){
-            for(HashMap<String,String> ettprojekt: projektLista){
-                resultat.append(
-                    "Projektnummer: " + ettprojekt.get("pid") + "\n" +
-                    "Namn: " + ettprojekt.get("projektnamn") + "\n" +
-                    "Startdatum: " + ettprojekt.get("startdatum") + "\n" +
-                    "Slutdatum: " + ettprojekt.get("slutdatum"));
+        try {
+            String frånDatum = jTextFieldFråndatum.getText().trim();
+            String tillDatum = jTextFieldTilldatum.getText().trim();
+
+            if (!Validering.isValidDate(frånDatum) || !Validering.isValidDate(tillDatum)) {
+                JOptionPane.showMessageDialog(this, "Datum måste vara i formatet yyyy-MM-dd.");
+                return;
             }
-        }else{
-            resultat.append("Inga aktiva projekt hittades inom angivet datumspann.");
-        } jTextAreaSöktaProjekt.setText(resultat.toString());
-      }catch (InfException ex) {
-          JOptionPane.showMessageDialog(this, "Fel vid databassökning: " + ex.getMessage(), "Databasfel", JOptionPane.ERROR_MESSAGE);
-      }
+            String sqlAVD = "SELECT avdelning FROM anstalld WHERE epost = '" + inloggadAnvändare + "'";
+            String avdelning = idb.fetchSingle(sqlAVD);
+
+            String sql = "SELECT DISTINCT projekt.* FROM projekt "
+                    + "JOIN ans_proj on projekt.pid = ans_proj.pid "
+                    + "JOIN anstalld on ans_proj.aid = anstalld.aid "
+                    + "WHERE anstalld.avdelning = '" + avdelning + "' "
+                    + "AND projekt.status = 'Pågående' "
+                    + "AND (projekt.startdatum <= '" + tillDatum + "' "
+                    + "AND projekt.slutdatum >= '" + frånDatum + "' )";
+
+            ArrayList<HashMap<String, String>> projektLista = idb.fetchRows(sql);
+            StringBuilder resultat = new StringBuilder();
+
+            if (projektLista != null && !projektLista.isEmpty()) {
+                for (HashMap<String, String> ettprojekt : projektLista) {
+                    resultat.append(
+                            "Projektnummer: " + ettprojekt.get("pid") + "\n"
+                            + "Namn: " + ettprojekt.get("projektnamn") + "\n"
+                            + "Startdatum: " + ettprojekt.get("startdatum") + "\n"
+                            + "Slutdatum: " + ettprojekt.get("slutdatum"));
+                }
+            } else {
+                resultat.append("Inga aktiva projekt hittades inom angivet datumspann.");
+            }
+            jTextAreaSöktaProjekt.setText(resultat.toString());
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(this, "Fel vid databassökning: " + ex.getMessage(), "Databasfel", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonSökprojektActionPerformed
 
     private void bPartnersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPartnersActionPerformed
-      try{
-          String sql = "SELECT partner.namn, partner.kontaktperson, partner.kontaktepost FROM partner " +
-                  "JOIN projekt_partner ON projekt_partner.partner_pid = partner.pid " +
-                  "JOIN projekt ON projekt.pid = projekt_partner.pid " +
-                  "JOIN ans_proj ON ans_proj.pid = projekt.pid " +
-                  "JOIN anstalld ON anstalld.aid = ans_proj.aid " +
-                  "WHERE anstalld.epost = '" + inloggadAnvändare + "'";
-          
-          ArrayList<HashMap<String, String>> partnerLista = idb.fetchRows(sql);
-          
-          if(partnerLista != null && !partnerLista.isEmpty()){
-              StringBuilder partnerInfo = new StringBuilder("Partners i dina projekt: \n\n");
-              for(HashMap<String, String> partner : partnerLista){
-                 partnerInfo.append(partner.get("namn")).append(" — ")
-                           .append(partner.get("kontaktperson")).append(" (")
-                           .append(partner.get("kontaktepost")).append(")\n"); 
-              }
-                   JOptionPane.showMessageDialog(this, partnerInfo.toString(),   
-                     "Dina projektpartners", JOptionPane.INFORMATION_MESSAGE); 
-            }else{
-              JOptionPane.showMessageDialog(this, "Inga partners hittades för dina projekt.");
-          }
-                  
-        }catch (InfException ex) {
-        JOptionPane.showMessageDialog(this, "Fel vid hämtning av partners: " + ex.getMessage(), 
-                                      "Databasfel", JOptionPane.ERROR_MESSAGE);
-    }
+        try {
+            String sql = "SELECT partner.namn, partner.kontaktperson, partner.kontaktepost FROM partner "
+                    + "JOIN projekt_partner ON projekt_partner.partner_pid = partner.pid "
+                    + "JOIN projekt ON projekt.pid = projekt_partner.pid "
+                    + "JOIN ans_proj ON ans_proj.pid = projekt.pid "
+                    + "JOIN anstalld ON anstalld.aid = ans_proj.aid "
+                    + "WHERE anstalld.epost = '" + inloggadAnvändare + "'";
+
+            ArrayList<HashMap<String, String>> partnerLista = idb.fetchRows(sql);
+
+            if (partnerLista != null && !partnerLista.isEmpty()) {
+                StringBuilder partnerInfo = new StringBuilder("Partners i dina projekt: \n\n");
+                for (HashMap<String, String> partner : partnerLista) {
+                    partnerInfo.append(partner.get("namn")).append(" — ")
+                            .append(partner.get("kontaktperson")).append(" (")
+                            .append(partner.get("kontaktepost")).append(")\n");
+                }
+                JOptionPane.showMessageDialog(this, partnerInfo.toString(),
+                        "Dina projektpartners", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Inga partners hittades för dina projekt.");
+            }
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(this, "Fel vid hämtning av partners: " + ex.getMessage(),
+                    "Databasfel", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_bPartnersActionPerformed
 
     private void bProjektChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProjektChefActionPerformed
-     ProjektchefMeny fönster = new ProjektchefMeny(idb, inloggadAnvändare);
-fönster.setVisible(true);
+        ProjektchefMeny fönster = new ProjektchefMeny(idb, inloggadAnvändare);
+        fönster.setVisible(true);
 
     }//GEN-LAST:event_bProjektChefActionPerformed
 
