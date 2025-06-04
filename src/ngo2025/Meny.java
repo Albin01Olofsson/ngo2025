@@ -558,22 +558,37 @@ public class Meny extends javax.swing.JFrame {
         jPanelHållbarhetsmål.setVisible(false);
         jPanelPersonal.setVisible(true);
 
-        try {
-            String sql = "SELECT fornamn, efternamn, epost FROM anstalld WHERE avdelning = (SELECT avdelning from anstalld WHERE epost =  '" + inloggadAnvändare + "')";
-            ArrayList<HashMap<String, String>> personalLista = idb.fetchRows(sql);
-            DefaultListModel<String> modell = new DefaultListModel<>();
-            if (personalLista != null && !personalLista.isEmpty()) {
-                for (HashMap<String, String> personal : personalLista) {
-                    String rad = personal.get("fornamn") + " " + personal.get("efternamn") + " " + "Epost: " + personal.get("epost");
-                    modell.addElement(rad);
+       try {
+        // Hämtar alla anställda på den avdelning som inloggad användare tillhör, inklusive aid som behövs för handläggar-kollen
+        String sql = "SELECT fornamn, efternamn, epost, aid FROM anstalld WHERE avdelning = (SELECT avdelning FROM anstalld WHERE epost = '" + inloggadAnvändare + "')";
+        ArrayList<HashMap<String, String>> personalLista = idb.fetchRows(sql);
+        DefaultListModel<String> modell = new DefaultListModel<>();
+
+        if (personalLista != null && !personalLista.isEmpty()) {
+            for (HashMap<String, String> personal : personalLista) {
+                String fornamn = personal.get("fornamn");
+                String efternamn = personal.get("efternamn");
+                String epost = personal.get("epost");
+                String aid = personal.get("aid");
+
+                // Kontrollera om personen är handläggare
+                String roll = "";
+                String handlaggareSQL = "SELECT * FROM handlaggare WHERE aid = " + aid;
+                HashMap<String, String> handlaggareResultat = idb.fetchRow(handlaggareSQL);
+                if (handlaggareResultat != null && !handlaggareResultat.isEmpty()) {
+                    roll = "(Handläggare)";
                 }
-            } else {
-                modell.addElement("Ingen personal hittades.");
+
+                String rad = fornamn + " " + efternamn + " " + roll + " Epost: " + epost;
+                modell.addElement(rad);
             }
-            jListPersonal.setModel(modell);
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(this, "fel vid hämtning av Personal; " + ex.getMessage());
+        } else {
+            modell.addElement("Ingen personal hittades.");
         }
+        jListPersonal.setModel(modell);
+    } catch (InfException ex) {
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av Personal: " + ex.getMessage());
+    }
     }//GEN-LAST:event_bPersonalActionPerformed
 
     private void btnSparaPersonUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaPersonUppgifterActionPerformed

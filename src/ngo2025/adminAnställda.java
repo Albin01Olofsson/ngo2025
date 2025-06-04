@@ -285,20 +285,33 @@ try {
         // Bekräftelse innan borttagning
         int bekräfta = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort anställd med AID: " + aid + "?", "Bekräfta borttagning", JOptionPane.YES_NO_OPTION);
         if (bekräfta == JOptionPane.YES_OPTION) {
-            String sql = "DELETE FROM anstalld WHERE aid = '" + aid + "'";
-            idb.delete(sql);
-            JOptionPane.showMessageDialog(null, "Anställd har tagits bort!");
+            
+            // Ta först bort kopplingar från andra tabeller där aid finns som FK
+            String sql1 = "DELETE FROM ans_proj WHERE aid = '" + aid + "'";
+            idb.delete(sql1);
+            
+            String sql2 = "DELETE FROM handlaggare WHERE aid = '" + aid + "'";
+            idb.delete(sql2);
+            
+            String sql3 = "DELETE FROM admin WHERE aid = '" + aid + "'";
+            idb.delete(sql3);
+            
+            // Ta sedan bort själva anställda från anstalld-tabellen
+            String sql4 = "DELETE FROM anstalld WHERE aid = '" + aid + "'";
+            idb.delete(sql4);
+            
+            JOptionPane.showMessageDialog(null, "Anställd och kopplingar har tagits bort!");
 
             // Rensa fälten
-        aidField.setText("");
-        fornamnField.setText("");
-        efternamnField.setText("");
-        adressField.setText("");
-        epostField.setText("");
-        telefonField.setText("");
-        anstallningsdatumField.setText("");
-        losenordField.setText("");
-        avdelningField.setText("");
+            aidField.setText("");
+            fornamnField.setText("");
+            efternamnField.setText("");
+            adressField.setText("");
+            epostField.setText("");
+            telefonField.setText("");
+            anstallningsdatumField.setText("");
+            losenordField.setText("");
+            avdelningField.setText("");
         }
 
     } catch (InfException e) {
