@@ -607,6 +607,8 @@ public class Meny extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Ogiltigt telefonnummer. Endast siffror, bindestreck eller mellanslag tillåts.");
                 return;
             }
+            
+           
 
             String sql = "UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + efternamn
                     + "', adress = '" + adress + "', telefon = '" + telefon
